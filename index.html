@@ -159,7 +159,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cr2);color:var(--txt);ove
 <div class="hero">
   <div class="hero-tag">NRIX &nbsp;·&nbsp; Undangan Digital Premium</div>
   <h1 class="hero-h1">Pilih Tema <em>Undangan</em></h1>
-  <p class="hero-sub">Preview langsung di mode HP atau desktop. Download source code HTML-nya dan customisasi sesuai kebutuhan.</p>
+  <p class="hero-sub">Preview langsung di mode HP atau desktop.</p>
   <button class="hero-btn" onclick="document.getElementById('themes-sec').scrollIntoView({behavior:'smooth'})">
     Lihat 10 Tema
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1.5v10M1.5 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -372,9 +372,6 @@ function buildCard(t){
   var acts=document.createElement('div');acts.className='tcard-bot-acts';
   var bp=document.createElement('button');bp.className='t-btn-p';bp.textContent='Preview';
   bp.onclick=function(e){e.stopPropagation();openModal(t);};
-  var bdl=document.createElement('button');bdl.className='t-btn-d';bdl.title='Download';bdl.textContent='⬇';
-  bdl.onclick=function(e){e.stopPropagation();dlTheme(t);};
-  acts.appendChild(bp);acts.appendChild(bdl);bot.appendChild(acts);
 
   card.appendChild(top);card.appendChild(bot);
   card.onclick=function(){openModal(t);};
