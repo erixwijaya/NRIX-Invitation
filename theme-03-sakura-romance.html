@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Undangan Pernikahan – Rizky & Salsabila | Sakura Romance</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--pk:#e91e8c;--pk2:#fce8f0;--dk:#8B0045;--cr:#FDF0F5;--sub:#c97aa0;--txt:#5C1A2A}
+html{scroll-behavior:smooth}
+body{background:var(--cr);color:var(--txt);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+.splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#fce8f0,#fad5e4,#f8bfd0);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;transition:opacity .9s,visibility .9s}
+.splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+.petal{position:absolute;animation:petfall linear infinite;top:-30px;pointer-events:none}
+@keyframes petfall{0%{top:-30px;opacity:.7;transform:rotate(0deg) translateX(0)}100%{top:110vh;opacity:0;transform:rotate(360deg) translateX(40px)}}
+.sp-to{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dk);margin-bottom:6px}
+.sp-guest{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--dk);margin-bottom:22px}
+.sp-names{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,7vw,4rem);color:var(--dk);line-height:1.1}
+.sp-amp{font-style:italic;color:var(--pk)}
+.sp-date{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin:12px 0 28px}
+.sp-btn{padding:13px 36px;background:var(--pk);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:100px;transition:all .2s;box-shadow:0 4px 20px rgba(233,30,140,.3)}
+.sp-btn:hover{background:var(--dk);transform:translateY(-2px)}
+.mfab{position:fixed;bottom:22px;right:22px;z-index:1000;width:46px;height:46px;border-radius:50%;background:var(--pk2);border:1.5px solid var(--pk);color:var(--pk);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 4px 20px rgba(233,30,140,.2)}
+.mfab.on,.mfab:hover{background:var(--pk);color:#fff}
+section{padding:70px 0}
+.wrap{max-width:580px;margin:0 auto;padding:0 22px}
+.stag{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pk);text-align:center;margin-bottom:7px}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.3rem);color:var(--dk);text-align:center;font-weight:400}
+.grule{display:flex;align-items:center;gap:10px;margin:13px auto;width:fit-content}
+.grule::before,.grule::after{content:'';width:44px;height:1px;background:var(--pk);opacity:.3}
+.gdot{width:5px;height:5px;border-radius:50%;background:var(--pk)}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.vis{opacity:1;transform:translateY(0)}
+.hero{min-height:100vh;background:linear-gradient(160deg,#fce8f0,#fad5e4,#f5b8d0);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+.hero-petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-tag{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sub);position:relative}
+.hero-names{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,10vw,5.5rem);color:var(--dk);line-height:1;position:relative}
+.hero-amp{font-style:italic;color:var(--pk)}
+.hero-date{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin:14px 0;position:relative}
+.hero-photo{width:200px;height:265px;border-radius:50% 50% 46% 46%;overflow:hidden;border:3px solid rgba(233,30,140,.25);margin:20px auto 0;box-shadow:0 8px 32px rgba(233,30,140,.15);position:relative}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.45;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.scroll-hint span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
+.qsec{background:#fff5f8;padding:60px 24px;text-align:center}
+.qtext{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.18rem);color:var(--dk);line-height:1.88;max-width:480px;margin:14px auto;opacity:.88}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+@media(max-width:460px){.cgrid{grid-template-columns:1fr}}
+.ccard{background:#fff;border:1px solid rgba(233,30,140,.1);border-radius:16px;padding:22px;text-align:center;box-shadow:0 2px 16px rgba(233,30,140,.06)}
+.cav{width:88px;height:88px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:2px solid rgba(233,30,140,.25)}
+.cav img{width:100%;height:100%;object-fit:cover}
+.crole{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pk);margin-bottom:4px}
+.cname{font-family:'Playfair Display',serif;font-size:1rem;color:var(--dk);line-height:1.3}
+.cpar{font-size:.76rem;color:var(--sub);margin-top:7px;line-height:1.65}
+.cig{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.7rem;color:var(--pk);text-decoration:none;border:1px solid rgba(233,30,140,.25);border-radius:100px;padding:4px 12px;transition:all .2s}
+.cig:hover{background:var(--pk);color:#fff}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 4px;margin-top:22px}
+@media(min-width:560px){.gg{grid-template-columns:repeat(5,1fr)}}
+.gi{aspect-ratio:3/4;overflow:hidden;border-radius:4px}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;cursor:zoom-in;display:block}
+.gi img:hover{transform:scale(1.07)}
+.scgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media(max-width:460px){.scgrid{grid-template-columns:1fr}}
+.sccard{background:#fff;border:1px solid rgba(233,30,140,.1);border-radius:14px;padding:22px;text-align:center;box-shadow:0 2px 12px rgba(233,30,140,.05)}
+.scicon{font-size:2rem;margin-bottom:9px}
+.sctype{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pk);margin-bottom:5px}
+.scday{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--dk)}
+.scmonth{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin:3px 0}
+.sctime{font-size:.86rem;color:var(--txt);margin-bottom:7px}
+.scvenue{font-size:.8rem;color:var(--pk);font-weight:500}
+.scaddr{font-size:.74rem;color:var(--sub);margin-top:3px;line-height:1.5}
+.mapwrap{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid rgba(233,30,140,.1)}
+.mapwrap iframe{width:100%;height:210px;border:none;display:block;pointer-events:none}
+.mapbtn{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;background:var(--pk);color:#fff;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border:none;width:100%;cursor:pointer;font-family:inherit;transition:all .2s}
+.mapbtn:hover{background:var(--dk)}
+.cdsec{background:#fff5f8;padding:70px 24px;text-align:center}
+.cdgrid{display:inline-flex;background:#fff;border:1px solid rgba(233,30,140,.12);border-radius:14px;overflow:hidden;margin-top:26px;box-shadow:0 4px 24px rgba(233,30,140,.08)}
+.cdc{padding:16px 20px;border-right:1px solid rgba(233,30,140,.08)}
+.cdc:last-child{border-right:none}
+.cdn{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);color:var(--dk);line-height:1}
+.cdl{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-top:3px}
+.fbox{background:#fff;border:1px solid rgba(233,30,140,.1);border-radius:14px;padding:26px;margin-top:22px;box-shadow:0 2px 16px rgba(233,30,140,.05)}
+.flbl{font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pk);display:block;margin-bottom:5px}
+.finp{width:100%;background:#fdf5f8;border:1px solid rgba(233,30,140,.15);border-radius:8px;padding:10px 13px;font-family:inherit;font-size:.86rem;color:var(--txt);outline:none;margin-bottom:13px;transition:border .2s}
+.finp:focus{border-color:var(--pk)}
+.fta{min-height:78px;resize:vertical}
+.rrow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:13px}
+.rlbl{display:flex;align-items:center;gap:5px;font-size:.82rem;color:var(--txt);cursor:pointer}
+.rlbl input{accent-color:var(--pk)}
+.fbtn{width:100%;padding:12px;background:var(--pk);border:none;color:#fff;font-family:inherit;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:100px}
+.fbtn:hover{background:var(--dk)}
+#wlist{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+.wcard{background:#fff;border:1px solid rgba(233,30,140,.1);border-radius:12px;padding:15px}
+.wnew{animation:win .4s ease}
+@keyframes win{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.whd{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.wname{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--dk)}
+.wbadge{font-size:.6rem;letter-spacing:.07em;padding:2px 9px;border-radius:100px;border:1px solid}
+.bh{color:#16a34a;border-color:rgba(22,163,74,.3);background:rgba(22,163,74,.07)}
+.bt{color:#dc2626;border-color:rgba(220,38,38,.3);background:rgba(220,38,38,.07)}
+.wmsg{font-size:.82rem;color:var(--sub);line-height:1.6}
+</style>
+</head>
+<body>
+<audio id="bgaudio" loop preload="none"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg"></audio>
+<button class="mfab" id="mfab" title="Musik">♪</button>
+
+<div class="splash" id="splash">
+  <div id="sp-petals"></div>
+  <div class="sp-to">Kepada Yth.</div>
+  <div class="sp-guest">Bapak / Ibu / Saudara/i</div>
+  <div class="sp-names">Rizky <span class="sp-amp">&amp;</span> Salsabila</div>
+  <div class="sp-date">14 Juni 2025 &nbsp;·&nbsp; Jakarta</div>
+  <button class="sp-btn" id="openbtn" onclick="openInvite()">🌸 Buka Undangan</button>
+</div>
+
+<div id="main" style="display:none">
+<section class="hero">
+  <div class="hero-petals" id="hero-petals"></div>
+  <div class="hero-tag rev">The Wedding of</div>
+  <h1 class="hero-names rev">Rizky<br><span class="hero-amp">&amp;</span><br>Salsabila</h1>
+  <div class="hero-date rev">14 Juni 2025 &nbsp;·&nbsp; Jakarta</div>
+  <div class="hero-photo rev"><img src="https://picsum.photos/seed/sakura01/400/520" alt="Couple" loading="lazy"></div>
+  <div class="scroll-hint"><span>Scroll</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 6l6 6 6-6" stroke="#c97aa0" stroke-width="1.5"/></svg></div>
+</section>
+
+<div class="qsec rev">
+  <div class="stag">Kata Cinta</div>
+  <div class="grule"><div class="gdot"></div></div>
+  <p class="qtext">"Cinta bukan tentang menemukan seseorang yang sempurna, tapi belajar melihat seseorang yang tidak sempurna dengan cara yang sempurna — dan memilih untuk mencintainya setiap hari."</p>
+</div>
+
+<section style="background:#fff">
+  <div class="wrap">
+    <div class="stag rev">Mempelai</div>
+    <h2 class="stitle rev">Dua Hati Bersatu</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:12px" class="rev">Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu.</p>
+    <div class="cgrid rev">
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/sakura02/200/200" alt="Groom" loading="lazy"></div>
+        <div class="crole">Mempelai Pria</div>
+        <div class="cname">Rizky Pratama, S.T.</div>
+        <div class="cpar">Putra Pertama dari<br><strong style="color:var(--dk)">Bapak H. Bambang Suryadi &amp; Ibu Hj. Sri Wahyuni</strong></div>
+        <a href="#" class="cig">📷 @rizkypratama</a>
+      </div>
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/sakura03/200/200" alt="Bride" loading="lazy"></div>
+        <div class="crole">Mempelai Wanita</div>
+        <div class="cname">Salsabila Maharani, S.Pd.</div>
+        <div class="cpar">Putri Pertama dari<br><strong style="color:var(--dk)">Bapak H. Ahmad Fauzi &amp; Ibu Hj. Nenden Susilawati</strong></div>
+        <a href="#" class="cig">📷 @salsabilamaharani</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fdf5f8">
+  <div class="wrap"><div class="stag rev">Galeri</div><h2 class="stitle rev">Momen Indah</h2><div class="grule rev"><div class="gdot"></div></div></div>
+  <div class="gg rev" id="gal1" style="margin-top:22px"></div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap">
+    <div class="stag rev">Jadwal</div>
+    <h2 class="stitle rev">Acara Pernikahan</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <div class="scgrid rev">
+      <div class="sccard"><div class="scicon">💍</div><div class="sctype">Akad Nikah</div><div class="scday">14</div><div class="scmonth">Juni 2025</div><div class="sctime">09:00 WIB</div><div class="scvenue">Masjid Jami Al-Hikmah</div><div class="scaddr">Jl. Melati No. 12, Jakarta Selatan</div></div>
+      <div class="sccard"><div class="scicon">🎊</div><div class="sctype">Resepsi</div><div class="scday">14</div><div class="scmonth">Juni 2025</div><div class="sctime">11:00 – 15:00 WIB</div><div class="scvenue">Grand Ballroom Hotel Mulia</div><div class="scaddr">Jl. Asia Afrika, Jakarta Pusat</div></div>
+    </div>
+    <div class="mapwrap rev">
+      <iframe src="https://maps.google.com/maps?q=-6.2088,106.8456&t=m&z=15&output=embed" allowfullscreen loading="lazy"></iframe>
+      <button class="mapbtn" onclick="window.open('https://maps.google.com/?q=-6.2088,106.8456','_blank')">📍 Buka di Google Maps</button>
+    </div>
+  </div>
+</section>
+
+<div class="cdsec rev">
+  <div class="stag">Hitung Mundur</div>
+  <h2 class="stitle">Menuju Hari Bahagia</h2>
+  <div class="grule"><div class="gdot"></div></div>
+  <div class="cdgrid">
+    <div class="cdc"><div class="cdn" id="cd-d">00</div><div class="cdl">Hari</div></div>
+    <div class="cdc"><div class="cdn" id="cd-h">00</div><div class="cdl">Jam</div></div>
+    <div class="cdc"><div class="cdn" id="cd-m">00</div><div class="cdl">Menit</div></div>
+    <div class="cdc"><div class="cdn" id="cd-s">00</div><div class="cdl">Detik</div></div>
+  </div>
+</div>
+
+<section style="background:#fff;padding:0 0 70px"><div class="gg" id="gal2"></div></section>
+
+<section style="background:#fdf5f8">
+  <div class="wrap">
+    <div class="stag rev">Buku Tamu</div>
+    <h2 class="stitle rev">Ucapan &amp; RSVP</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <div class="fbox rev">
+      <label class="flbl">Nama Lengkap</label>
+      <input class="finp" type="text" id="wname" placeholder="Nama Anda">
+      <label class="flbl">Ucapan &amp; Doa</label>
+      <textarea class="finp fta" id="wmsg" placeholder="Tulis ucapan untuk mempelai..."></textarea>
+      <label class="flbl">Konfirmasi Kehadiran</label>
+      <div class="rrow">
+        <label class="rlbl"><input type="radio" name="rsvp" value="hadir" checked> ✓ Hadir</label>
+        <label class="rlbl"><input type="radio" name="rsvp" value="tidak"> ✕ Tidak Hadir</label>
+      </div>
+      <button class="fbtn" id="wsubmit">Kirim Ucapan 🌸</button>
+    </div>
+    <div id="wlist"></div>
+  </div>
+</section>
+
+<div style="background:linear-gradient(135deg,var(--pk),var(--dk));padding:44px 24px;text-align:center">
+  <div style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff">Rizky &amp; Salsabila</div>
+  <div style="font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:4px">14 Juni 2025 · Jakarta</div>
+  <div style="margin:14px auto;width:34px;height:1px;background:rgba(255,255,255,.4)"></div>
+  <div style="font-size:.66rem;color:rgba(255,255,255,.5);letter-spacing:.08em">Made with 🌸 InviteID · Rix Studio</div>
+</div>
+</div>
+
+<script>
+function makePetals(containerId, count) {
+  var c = document.getElementById(containerId); if (!c) return;
+  var emojis = ['🌸','🌺','🌷'];
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement('div'); p.className = 'petal';
+    p.textContent = emojis[i % emojis.length];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.fontSize = (10 + Math.random() * 14) + 'px';
+    p.style.animationDuration = (4 + Math.random() * 6) + 's';
+    p.style.animationDelay = Math.random() * 8 + 's';
+    c.appendChild(p);
+  }
+}
+function openInvite(){
+  document.getElementById('splash').classList.add('gone');
+  document.getElementById('main').style.display='block';
+  makePetals('hero-petals', 18);
+  buildGallery('gal1',[100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480],400,520);
+  buildGallery('gal2',[101,121,141,161,181,201,221,241,261,281,301,321,341,361,381,401,421,441,461,481],400,520);
+  initReveal(); startCountdown(2025,6,14); initGB(); setTimeout(tryAutoplay,700);
+}
+makePetals('sp-petals', 10);
+var musicOn=false, audio=document.getElementById('bgaudio');
+document.getElementById('mfab').onclick=function(){
+  if(musicOn){audio.pause();musicOn=false;this.classList.remove('on');this.textContent='♪';}
+  else{audio.play().catch(function(){});musicOn=true;this.classList.add('on');this.textContent='♬';}
+};
+function tryAutoplay(){audio.play().then(function(){musicOn=true;var b=document.getElementById('mfab');b.classList.add('on');b.textContent='♬';}).catch(function(){});}
+function initReveal(){
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});
+  document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});
+}
+function buildGallery(id,seeds,w,h){
+  var c=document.getElementById(id);if(!c)return;
+  seeds.forEach(function(s){var d=document.createElement('div');d.className='gi';var img=document.createElement('img');img.src='https://picsum.photos/seed/'+s+'/'+w+'/'+h;img.loading='lazy';img.alt='Photo';img.onclick=function(){openLB(img.src);};d.appendChild(img);c.appendChild(d);});
+}
+function openLB(src){var lb=document.createElement('div');lb.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(10px)';lb.innerHTML='<img src="'+src+'" style="max-width:92vw;max-height:88vh;border-radius:12px">';lb.onclick=function(){lb.remove();};document.body.appendChild(lb);}
+function startCountdown(y,mo,d){
+  var target=new Date(y,mo-1,d,9,0,0);
+  function upd(){var diff=target-new Date();if(diff<=0)return;var s=Math.floor(diff/1e3),mi=Math.floor(s/60),h=Math.floor(mi/60),da=Math.floor(h/24),el;if((el=document.getElementById('cd-d')))el.textContent=String(da).padStart(2,'0');if((el=document.getElementById('cd-h')))el.textContent=String(h%24).padStart(2,'0');if((el=document.getElementById('cd-m')))el.textContent=String(mi%60).padStart(2,'0');if((el=document.getElementById('cd-s')))el.textContent=String(s%60).padStart(2,'0');}
+  upd();setInterval(upd,1000);
+}
+function initGB(){
+  var sample=[{n:'Budi Santoso',s:'hadir',m:'Selamat menempuh hidup baru! Semoga sakinah mawaddah warahmah 💝'},{n:'Dewi Rahayu',s:'hadir',m:'Congrats! Semoga langgeng dan selalu bahagia 🌸'},{n:'Ahmad Rizal',s:'tidak',m:'Mohon maaf tidak bisa hadir. Doa terbaik untuk kalian 🙏'}];
+  var list=document.getElementById('wlist');
+  function render(w,pre){var c=document.createElement('div');c.className='wcard'+(pre?' wnew':'');c.innerHTML='<div class="whd"><span class="wname">'+w.n+'</span><span class="wbadge '+(w.s==='hadir'?'bh':'bt')+'">'+(w.s==='hadir'?'✓ Hadir':'✕ Tidak Hadir')+'</span></div><p class="wmsg">'+w.m+'</p>';if(pre)list.insertBefore(c,list.firstChild);else list.appendChild(c);}
+  sample.forEach(function(w){render(w,false);});
+  document.getElementById('wsubmit').onclick=function(){var n=document.getElementById('wname').value.trim(),m=document.getElementById('wmsg').value.trim(),s=document.querySelector('input[name="rsvp"]:checked');if(!n||!m){alert('Mohon isi nama dan ucapan Anda.');return;}render({n:n,s:s?s.value:'hadir',m:m},true);document.getElementById('wname').value='';document.getElementById('wmsg').value='';};
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Undangan – Dimas & Dewi | Tropical Butterfly</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gr1:#0a2e1a;--gr2:#0f3d22;--gr3:#155c30;
+  --acc:#6dbf67;--acc2:#a8e063;--acc3:#c8f0a0;
+  --cr:#f0faf0;--sub:rgba(200,240,160,0.55);--txt:#e8f5e0
+}
+html{scroll-behavior:smooth}
+body{background:var(--gr1);color:var(--txt);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* ── SPLASH ── */
+.splash{position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(160deg,#061a0d,#0a2e1a,#0f3d22);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:32px;transition:opacity .9s,visibility .9s;overflow:hidden}
+.splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+.leaf-deco{position:absolute;font-size:clamp(40px,8vw,80px);opacity:.12;pointer-events:none;animation:sway 6s ease-in-out infinite}
+.leaf-deco.l1{top:-20px;left:-20px;transform-origin:top left;animation-delay:0s}
+.leaf-deco.l2{top:-20px;right:-20px;transform-origin:top right;animation-delay:1.5s;transform:scaleX(-1)}
+.leaf-deco.l3{bottom:-10px;left:-10px;transform-origin:bottom left;animation-delay:3s}
+.leaf-deco.l4{bottom:-10px;right:-10px;transform-origin:bottom right;animation-delay:4.5s;transform:scaleX(-1)}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.sp-to{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc2);margin-bottom:5px}
+.sp-guest{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--cr);margin-bottom:20px}
+.sp-names{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,7vw,3.8rem);font-weight:300;color:var(--cr);line-height:1.1}
+.sp-amp{font-style:italic;color:var(--acc2)}
+.sp-date{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin:11px 0 26px}
+.sp-btn{padding:12px 34px;background:transparent;border:1.5px solid var(--acc);color:var(--acc);
+  font-family:'DM Sans',sans-serif;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;border-radius:100px;transition:all .2s}
+.sp-btn:hover{background:var(--acc);color:var(--gr1)}
+
+/* ── BUTTERFLY FLOAT ── */
+.butterfly{position:fixed;pointer-events:none;z-index:998;font-size:22px;
+  animation:bfly linear infinite;opacity:.7}
+@keyframes bfly{
+  0%{transform:translate(0,0) rotate(0deg)}
+  25%{transform:translate(80px,-60px) rotate(15deg)}
+  50%{transform:translate(-40px,-120px) rotate(-10deg)}
+  75%{transform:translate(60px,-180px) rotate(20deg)}
+  100%{transform:translate(0,-260px) rotate(0deg);opacity:0}
+}
+
+/* ── MUSIC FAB ── */
+.mfab{position:fixed;bottom:22px;right:22px;z-index:1000;width:46px;height:46px;
+  border-radius:50%;background:var(--gr2);border:1.5px solid var(--acc);
+  color:var(--acc);font-size:1rem;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:all .2s;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.mfab.on,.mfab:hover{background:var(--acc);color:var(--gr1)}
+
+/* ── BASE ── */
+section{padding:70px 0}
+.wrap{max-width:580px;margin:0 auto;padding:0 22px}
+.stag{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acc2);text-align:center;margin-bottom:7px}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--cr);text-align:center;font-weight:300}
+.grule{display:flex;align-items:center;gap:10px;margin:13px auto;width:fit-content}
+.grule::before,.grule::after{content:'';width:44px;height:1px;background:var(--acc);opacity:.45}
+.gdot{width:5px;height:5px;border-radius:50%;background:var(--acc)}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.vis{opacity:1;transform:translateY(0)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:linear-gradient(160deg,#061a0d,#0a2e1a,#0f3d22);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+.hero-leaves{position:absolute;inset:0;pointer-events:none}
+.hlf{position:absolute;font-size:clamp(30px,5vw,60px);opacity:.08;animation:sway 8s ease-in-out infinite}
+.hero-tag{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc2);opacity:.8;position:relative}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,10vw,6rem);font-weight:300;color:var(--cr);line-height:1;position:relative}
+.hero-amp{font-style:italic;color:var(--acc2)}
+.hero-loc{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin:14px 0;position:relative}
+.hero-photo{width:200px;height:265px;border-radius:50% 50% 46% 46%;overflow:hidden;
+  border:2px solid rgba(109,191,103,.35);margin:20px auto 0;
+  box-shadow:0 8px 40px rgba(0,0,0,.5);position:relative}
+.hero-photo::after{content:'';position:absolute;inset:0;border-radius:inherit;
+  box-shadow:inset 0 0 30px rgba(109,191,103,.12)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.4;
+  animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.scroll-hint span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2)}
+
+/* ── QUOTE ── */
+.qsec{background:linear-gradient(180deg,#061a0d,#0a2e1a);padding:60px 24px;text-align:center}
+.qleaf{font-size:32px;margin-bottom:12px;display:block}
+.qtext{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.18rem);
+  color:var(--cr);line-height:1.9;max-width:480px;margin:12px auto;opacity:.88}
+.qsrc{font-size:.68rem;letter-spacing:.12em;color:var(--acc2);margin-top:12px;text-transform:uppercase}
+
+/* ── COUPLE ── */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+@media(max-width:460px){.cgrid{grid-template-columns:1fr}}
+.ccard{background:rgba(109,191,103,.06);border:1px solid rgba(109,191,103,.2);border-radius:16px;padding:22px;text-align:center}
+.cav{width:90px;height:90px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:2px solid rgba(109,191,103,.4)}
+.cav img{width:100%;height:100%;object-fit:cover}
+.crole{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc2);margin-bottom:4px}
+.cname{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cr);line-height:1.3}
+.cpar{font-size:.76rem;color:var(--sub);margin-top:7px;line-height:1.65}
+.cig{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.7rem;color:var(--acc);text-decoration:none;border:1px solid rgba(109,191,103,.3);border-radius:100px;padding:4px 12px;transition:all .2s}
+.cig:hover{background:var(--acc);color:var(--gr1)}
+
+/* ── GALLERY ── */
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 4px;margin-top:22px}
+@media(min-width:560px){.gg{grid-template-columns:repeat(5,1fr)}}
+.gi{aspect-ratio:3/4;overflow:hidden;border-radius:4px}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;cursor:zoom-in;display:block}
+.gi img:hover{transform:scale(1.07)}
+
+/* ── SCHEDULE ── */
+.scgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media(max-width:460px){.scgrid{grid-template-columns:1fr}}
+.sccard{border:1px solid rgba(109,191,103,.2);border-radius:16px;padding:22px;text-align:center;background:rgba(109,191,103,.05)}
+.scicon{font-size:2rem;margin-bottom:9px}
+.sctype{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc2);margin-bottom:5px}
+.scday{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cr)}
+.scmonth{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin:3px 0}
+.sctime{font-size:.86rem;color:var(--txt);margin-bottom:7px}
+.scvenue{font-size:.8rem;color:var(--acc);font-weight:500}
+.scaddr{font-size:.74rem;color:var(--sub);margin-top:3px;line-height:1.5}
+.mapwrap{margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid rgba(109,191,103,.18)}
+.mapwrap iframe{width:100%;height:210px;border:none;display:block;pointer-events:none;filter:hue-rotate(60deg) saturate(.8) brightness(.75)}
+.mapbtn{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;background:rgba(109,191,103,.1);color:var(--acc);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border:none;width:100%;cursor:pointer;font-family:inherit;transition:all .2s}
+.mapbtn:hover{background:var(--acc);color:var(--gr1)}
+
+/* ── COUNTDOWN ── */
+.cdsec{background:#061a0d;padding:70px 24px;text-align:center}
+.cdgrid{display:inline-flex;border:1px solid rgba(109,191,103,.22);border-radius:16px;overflow:hidden;margin-top:26px}
+.cdc{padding:16px 20px;border-right:1px solid rgba(109,191,103,.12)}
+.cdc:last-child{border-right:none}
+.cdn{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3rem);color:var(--acc3);line-height:1}
+.cdl{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2);opacity:.7;margin-top:3px}
+
+/* ── RSVP ── */
+.fbox{background:rgba(109,191,103,.05);border:1px solid rgba(109,191,103,.18);border-radius:16px;padding:26px;margin-top:22px}
+.flbl{font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2);display:block;margin-bottom:5px}
+.finp{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(109,191,103,.2);border-radius:8px;padding:10px 13px;font-family:inherit;font-size:.86rem;color:var(--txt);outline:none;margin-bottom:13px;transition:border .2s}
+.finp:focus{border-color:var(--acc)}
+.fta{min-height:78px;resize:vertical}
+.rrow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:13px}
+.rlbl{display:flex;align-items:center;gap:5px;font-size:.82rem;color:var(--txt);cursor:pointer}
+.rlbl input{accent-color:var(--acc)}
+.fbtn{width:100%;padding:12px;background:var(--gr3);border:1.5px solid var(--acc);color:var(--acc);font-family:inherit;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:100px}
+.fbtn:hover{background:var(--acc);color:var(--gr1)}
+#wlist{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+.wcard{background:rgba(109,191,103,.04);border:1px solid rgba(109,191,103,.12);border-radius:12px;padding:15px}
+.wnew{animation:win .4s ease}
+@keyframes win{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.whd{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.wname{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--cr)}
+.wbadge{font-size:.6rem;letter-spacing:.07em;padding:2px 9px;border-radius:100px;border:1px solid}
+.bh{color:#4ade80;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.07)}
+.bt{color:#f87171;border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.07)}
+.wmsg{font-size:.82rem;color:var(--sub);line-height:1.6}
+</style>
+</head>
+<body>
+<audio id="bgaudio" loop preload="none"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg"></audio>
+<button class="mfab" id="mfab" title="Musik">♪</button>
+<div id="butterfly-container"></div>
+
+<!-- SPLASH -->
+<div class="splash" id="splash">
+  <span class="leaf-deco l1">🌿</span><span class="leaf-deco l2">🌿</span>
+  <span class="leaf-deco l3">🍃</span><span class="leaf-deco l4">🍃</span>
+  <div class="sp-to">Kepada Yth.</div>
+  <div class="sp-guest">Bapak / Ibu / Saudara/i</div>
+  <div class="sp-names">Dimas <span class="sp-amp">&amp;</span> Dewi</div>
+  <div class="sp-date">25 November 2025 &nbsp;·&nbsp; Ubud, Bali</div>
+  <button class="sp-btn" id="openbtn" onclick="openInvite()">🦋 Buka Undangan</button>
+</div>
+
+<!-- MAIN -->
+<div id="main" style="display:none">
+
+<section class="hero">
+  <div class="hero-leaves">
+    <span class="hlf" style="top:5%;left:2%;animation-delay:0s">🌿</span>
+    <span class="hlf" style="top:5%;right:2%;transform:scaleX(-1);animation-delay:2s">🌿</span>
+    <span class="hlf" style="top:40%;left:-1%;animation-delay:4s">🍃</span>
+    <span class="hlf" style="top:40%;right:-1%;transform:scaleX(-1);animation-delay:1s">🍃</span>
+    <span class="hlf" style="bottom:10%;left:5%;animation-delay:3s">🌱</span>
+    <span class="hlf" style="bottom:10%;right:5%;transform:scaleX(-1);animation-delay:5s">🌱</span>
+  </div>
+  <div class="hero-tag rev">The Wedding of</div>
+  <h1 class="hero-names rev">Dimas<br><span class="hero-amp">&amp;</span><br>Dewi</h1>
+  <div class="hero-loc rev">Ubud, Bali &nbsp;·&nbsp; 25 November 2025</div>
+  <div class="hero-photo rev"><img src="https://picsum.photos/seed/tropical01/400/520" alt="Couple" loading="lazy"></div>
+  <div class="scroll-hint"><span>Scroll</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 6l6 6 6-6" stroke="#a8e063" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- QUOTE -->
+<div class="qsec rev">
+  <span class="qleaf">🦋</span>
+  <div class="stag">Sabda Weda</div>
+  <div class="grule"><div class="gdot"></div></div>
+  <p class="qtext">"Dalam sebuah pernikahan kalian disatukan demi sebuah kebahagiaan dengan janji hati untuk saling membahagiakan. Bersamaku engkau akan hidup selamanya karena Tuhan pasti akan memberikan karunia sebagai pelindung dan saksi dalam pernikahan ini. Untuk itulah kalian dipersatukan dalam satu keluarga."</p>
+  <div class="qsrc">— RGVEDA : X.85.36 —</div>
+</div>
+
+<!-- COUPLE -->
+<section style="background:var(--gr2)">
+  <div class="wrap">
+    <div class="stag rev">Mempelai</div>
+    <h2 class="stitle rev">Dua Insan, Satu Cinta</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:12px" class="rev">Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami bermaksud mengundang Bapak/Ibu/Saudara/i pada Upacara Pawiwahan kami.</p>
+    <div class="cgrid rev">
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/tropical02/200/200" alt="Groom" loading="lazy"></div>
+        <div class="crole">Mempelai Pria</div>
+        <div class="cname">Dimas Rambu Anarki, S.T.</div>
+        <div class="cpar">Putra Ketiga dari pasangan<br><strong style="color:var(--acc3)">Bapak Moh. Fid &amp; Ibu Ni Made Darmani</strong><br>Br. Sindu Sayan, Ubud</div>
+        <a href="#" class="cig">📷 @dimasanarki</a>
+      </div>
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/tropical03/200/200" alt="Bride" loading="lazy"></div>
+        <div class="crole">Mempelai Wanita</div>
+        <div class="cname">Ni Wayan Swandewi, A.Md.</div>
+        <div class="cpar">Putri Pertama dari pasangan<br><strong style="color:var(--acc3)">Bapak I Nyoman Yasa &amp; Ibu Ni Nyoman Lepo</strong><br>Br. Guliang Kawan, Bangli</div>
+        <a href="#" class="cig">📷 @swandewi_bali</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY 1 -->
+<section style="background:var(--gr1)">
+  <div class="wrap"><div class="stag rev">Kenangan</div><h2 class="stitle rev">Galeri Foto</h2><div class="grule rev"><div class="gdot"></div></div></div>
+  <div class="gg rev" id="gal1" style="margin-top:22px"></div>
+</section>
+
+<!-- SCHEDULE -->
+<section style="background:var(--gr2)">
+  <div class="wrap">
+    <div class="stag rev">Jadwal</div>
+    <h2 class="stitle rev">Acara Pernikahan</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:10px" class="rev">Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu.</p>
+    <div class="scgrid rev">
+      <div class="sccard"><div class="scicon">🛕</div><div class="sctype">Upacara Pawiwahan</div><div class="scday">25</div><div class="scmonth">November 2025</div><div class="sctime">09:00 WITA – Selesai</div><div class="scvenue">Puri Saren Agung</div><div class="scaddr">Ubud, Gianyar, Bali</div></div>
+      <div class="sccard"><div class="scicon">🌿</div><div class="sctype">Resepsi</div><div class="scday">25</div><div class="scmonth">November 2025</div><div class="sctime">13:00 – 17:00 WITA</div><div class="scvenue">Alila Ubud Resort</div><div class="scaddr">Jl. Mekar Sari, Ubud, Bali</div></div>
+    </div>
+    <div class="mapwrap rev">
+      <iframe src="https://maps.google.com/maps?q=-8.5069,115.2625&t=m&z=14&output=embed" allowfullscreen loading="lazy"></iframe>
+      <button class="mapbtn" onclick="window.open('https://maps.google.com/?q=-8.5069,115.2625','_blank')">📍 Buka di Google Maps</button>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="cdsec rev">
+  <div class="stag">Hitung Mundur</div>
+  <h2 class="stitle">Menuju Hari Bahagia</h2>
+  <div class="grule"><div class="gdot"></div></div>
+  <div class="cdgrid">
+    <div class="cdc"><div class="cdn" id="cd-d">00</div><div class="cdl">Hari</div></div>
+    <div class="cdc"><div class="cdn" id="cd-h">00</div><div class="cdl">Jam</div></div>
+    <div class="cdc"><div class="cdn" id="cd-m">00</div><div class="cdl">Menit</div></div>
+    <div class="cdc"><div class="cdn" id="cd-s">00</div><div class="cdl">Detik</div></div>
+  </div>
+</div>
+
+<!-- GALLERY 2 -->
+<section style="background:var(--gr1);padding:0 0 70px"><div class="gg" id="gal2"></div></section>
+
+<!-- RSVP -->
+<section style="background:var(--gr2)">
+  <div class="wrap">
+    <div class="stag rev">Buku Tamu</div>
+    <h2 class="stitle rev">Ucapan &amp; RSVP</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <div class="fbox rev">
+      <label class="flbl">Nama Lengkap</label>
+      <input class="finp" type="text" id="wname" placeholder="Nama Anda">
+      <label class="flbl">Ucapan &amp; Doa</label>
+      <textarea class="finp fta" id="wmsg" placeholder="Tulis ucapan untuk mempelai..."></textarea>
+      <label class="flbl">Konfirmasi Kehadiran</label>
+      <div class="rrow">
+        <label class="rlbl"><input type="radio" name="rsvp" value="hadir" checked> ✓ Hadir</label>
+        <label class="rlbl"><input type="radio" name="rsvp" value="tidak"> ✕ Tidak Hadir</label>
+      </div>
+      <button class="fbtn" id="wsubmit">Kirim Ucapan 🌿</button>
+    </div>
+    <div id="wlist"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div style="background:#030f07;border-top:1px solid rgba(109,191,103,.12);padding:44px 24px;text-align:center">
+  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cr)">Dimas &amp; Dewi</div>
+  <div style="font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);opacity:.55;margin-top:4px">25 November 2025 · Ubud, Bali</div>
+  <div style="margin:14px auto;width:34px;height:1px;background:var(--acc);opacity:.35"></div>
+  <div style="font-size:.66rem;color:rgba(109,191,103,.4);letter-spacing:.08em">Made with 🦋 InviteID · Rix Studio</div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+/* BUTTERFLIES */
+function spawnButterflies() {
+  var container = document.getElementById('butterfly-container');
+  var emojis = ['🦋','🦋','🍃','🌿'];
+  for (var i = 0; i < 6; i++) {
+    (function(idx) {
+      var b = document.createElement('div');
+      b.className = 'butterfly';
+      b.textContent = emojis[idx % emojis.length];
+      b.style.left = (10 + Math.random() * 80) + '%';
+      b.style.bottom = '-40px';
+      b.style.fontSize = (14 + Math.random() * 12) + 'px';
+      b.style.animationDuration = (8 + Math.random() * 10) + 's';
+      b.style.animationDelay = (idx * 3 + Math.random() * 4) + 's';
+      container.appendChild(b);
+      b.addEventListener('animationend', function() { b.remove(); spawnOne(idx); });
+    })(i);
+  }
+}
+function spawnOne(idx) {
+  var container = document.getElementById('butterfly-container');
+  var b = document.createElement('div');
+  b.className = 'butterfly';
+  b.textContent = ['🦋','🍃','🌿'][idx % 3];
+  b.style.left = (5 + Math.random() * 90) + '%';
+  b.style.bottom = '-40px';
+  b.style.fontSize = (14 + Math.random() * 12) + 'px';
+  b.style.animationDuration = (8 + Math.random() * 10) + 's';
+  b.style.animationDelay = (Math.random() * 2) + 's';
+  container.appendChild(b);
+  b.addEventListener('animationend', function() { b.remove(); spawnOne(idx); });
+}
+
+function openInvite() {
+  document.getElementById('splash').classList.add('gone');
+  document.getElementById('main').style.display = 'block';
+  spawnButterflies();
+  buildGallery('gal1',[500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690],400,520);
+  buildGallery('gal2',[501,512,523,534,545,556,567,578,589,600,611,622,633,644,655,666,677,688,699,710],400,520);
+  initReveal(); startCountdown(2025,11,25); initGB(); setTimeout(tryAutoplay,700);
+}
+var musicOn=false, audio=document.getElementById('bgaudio');
+document.getElementById('mfab').onclick=function(){
+  if(musicOn){audio.pause();musicOn=false;this.classList.remove('on');this.textContent='♪';}
+  else{audio.play().catch(function(){});musicOn=true;this.classList.add('on');this.textContent='♬';}
+};
+function tryAutoplay(){audio.play().then(function(){musicOn=true;var b=document.getElementById('mfab');b.classList.add('on');b.textContent='♬';}).catch(function(){});}
+function initReveal(){
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});
+  document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});
+}
+function buildGallery(id,seeds,w,h){
+  var c=document.getElementById(id);if(!c)return;
+  seeds.forEach(function(s){var d=document.createElement('div');d.className='gi';var img=document.createElement('img');img.src='https://picsum.photos/seed/'+s+'/'+w+'/'+h;img.loading='lazy';img.alt='Photo';img.onclick=function(){openLB(img.src);};d.appendChild(img);c.appendChild(d);});
+}
+function openLB(src){var lb=document.createElement('div');lb.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(10px)';lb.innerHTML='<img src="'+src+'" style="max-width:92vw;max-height:88vh;border-radius:8px">';lb.onclick=function(){lb.remove();};document.body.appendChild(lb);}
+function startCountdown(y,mo,d){
+  var target=new Date(y,mo-1,d,9,0,0);
+  function upd(){var diff=target-new Date();if(diff<=0)return;var s=Math.floor(diff/1e3),mi=Math.floor(s/60),h=Math.floor(mi/60),da=Math.floor(h/24),el;if((el=document.getElementById('cd-d')))el.textContent=String(da).padStart(2,'0');if((el=document.getElementById('cd-h')))el.textContent=String(h%24).padStart(2,'0');if((el=document.getElementById('cd-m')))el.textContent=String(mi%60).padStart(2,'0');if((el=document.getElementById('cd-s')))el.textContent=String(s%60).padStart(2,'0');}
+  upd();setInterval(upd,1000);
+}
+function initGB(){
+  var sample=[{n:'Ni Putu Ari',s:'hadir',m:'Selamat untuk Dimas dan Dewi! Semoga selalu bahagia dan langgeng ya 🦋'},{n:'Gede Wirawan',s:'hadir',m:'Congrats! Akhirnya jadian juga kalian hehe. Bahagia terus ya 🌿'},{n:'Made Darmawan',s:'tidak',m:'Mohon maaf tidak bisa hadir. Doa terbaik dari kami 🙏'}];
+  var list=document.getElementById('wlist');
+  function render(w,pre){var c=document.createElement('div');c.className='wcard'+(pre?' wnew':'');c.innerHTML='<div class="whd"><span class="wname">'+w.n+'</span><span class="wbadge '+(w.s==='hadir'?'bh':'bt')+'">'+(w.s==='hadir'?'✓ Hadir':'✕ Tidak Hadir')+'</span></div><p class="wmsg">'+w.m+'</p>';if(pre)list.insertBefore(c,list.firstChild);else list.appendChild(c);}
+  sample.forEach(function(w){render(w,false);});
+  document.getElementById('wsubmit').onclick=function(){var n=document.getElementById('wname').value.trim(),m=document.getElementById('wmsg').value.trim(),s=document.querySelector('input[name="rsvp"]:checked');if(!n||!m){alert('Mohon isi nama dan ucapan Anda.');return;}render({n:n,s:s?s.value:'hadir',m:m},true);document.getElementById('wname').value='';document.getElementById('wmsg').value='';};
+}
+</script>
+</body>
+</html>

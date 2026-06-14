@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Undangan Pernikahan – Rafi & Nayla | Minimalist Ivory</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --iv:#faf7f2;--iv2:#f5f0e8;--iv3:#ede8de;--iv4:#e5ddd0;
+  --sand:#d4c5a9;--sand2:#c4b090;--sand3:#b09a72;
+  --dk:#2c2318;--dk2:#3d3020;--txt:#3d3020;--sub:#8a7a65;--border:rgba(176,154,114,0.22)
+}
+html{scroll-behavior:smooth}
+body{background:var(--iv);color:var(--txt);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* ── SECTION BACKGROUNDS — every section distinct ── */
+.bg-plain{background:var(--iv)}
+.bg-warm{background:linear-gradient(160deg,var(--iv2) 0%,var(--iv3) 100%)}
+.bg-sand{background:
+  linear-gradient(160deg,var(--iv3) 0%,var(--iv4) 100%),
+  url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 5 L75 40 L40 75 L5 40 Z' fill='none' stroke='%23b09a72' stroke-width='0.4' opacity='0.15'/%3E%3C/svg%3E")}
+.bg-dots{background:
+  var(--iv2),
+  url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='15' cy='15' r='1.2' fill='%23b09a72' opacity='0.18'/%3E%3C/svg%3E")}
+.bg-lines{background:
+  linear-gradient(135deg,var(--iv) 0%,var(--iv3) 100%),
+  url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='60' x2='60' y2='0' stroke='%23b09a72' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E")}
+.bg-cross{background:var(--iv2),
+  url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='0' x2='40' y2='40' stroke='%23c4b090' stroke-width='0.4' opacity='0.12'/%3E%3Cline x1='40' y1='0' x2='0' y2='40' stroke='%23c4b090' stroke-width='0.4' opacity='0.12'/%3E%3C/svg%3E")}
+.bg-dark{background:linear-gradient(160deg,var(--dk2) 0%,var(--dk) 100%)}
+.bg-dark-sand{background:
+  radial-gradient(ellipse at 30% 50%,rgba(176,154,114,.12) 0%,transparent 60%),
+  radial-gradient(ellipse at 70% 50%,rgba(176,154,114,.08) 0%,transparent 60%),
+  linear-gradient(160deg,var(--dk) 0%,var(--dk2) 100%)}
+.bg-hero{
+  background:
+    radial-gradient(ellipse at 50% 100%,rgba(212,197,169,.4) 0%,transparent 60%),
+    linear-gradient(170deg,var(--iv) 0%,var(--iv3) 40%,var(--iv4) 100%)}
+
+/* ── SPLASH ── */
+.splash{position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(160deg,var(--dk2),var(--dk));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:32px;transition:opacity .9s,visibility .9s;overflow:hidden}
+.splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+.sp-bg-ornament{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sp-bg-ornament::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;border:1px solid rgba(212,197,169,.08);top:50%;left:50%;transform:translate(-50%,-50%)}
+.sp-bg-ornament::after{content:'';position:absolute;width:280px;height:280px;border-radius:50%;border:1px solid rgba(212,197,169,.1);top:50%;left:50%;transform:translate(-50%,-50%)}
+.sp-ornament-line{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--sand2),transparent);margin:0 auto 20px}
+.sp-to{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sand2);margin-bottom:5px;position:relative}
+.sp-guest{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--iv);margin-bottom:22px;position:relative}
+.sp-names{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,7vw,4rem);font-weight:300;color:var(--iv);line-height:1.1;position:relative}
+.sp-amp{font-style:italic;color:var(--sand2)}
+.sp-date{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.45);margin:12px 0 28px;position:relative}
+.sp-btn{padding:12px 36px;background:transparent;border:1.5px solid var(--sand2);color:var(--sand2);font-family:'DM Sans',sans-serif;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;position:relative}
+.sp-btn:hover{background:var(--sand2);color:var(--dk)}
+
+/* ── MUSIC ── */
+.mfab{position:fixed;bottom:22px;right:22px;z-index:1000;width:46px;height:46px;border-radius:50%;background:var(--iv2);border:1.5px solid var(--sand2);color:var(--sand3);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 4px 20px rgba(44,35,24,.15)}
+.mfab.on,.mfab:hover{background:var(--sand3);color:#fff}
+
+/* ── BASE ── */
+section{padding:70px 0}
+.wrap{max-width:580px;margin:0 auto;padding:0 22px}
+.stag{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--sand3);text-align:center;margin-bottom:7px}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--dk);text-align:center;font-weight:300}
+.grule{display:flex;align-items:center;gap:10px;margin:13px auto;width:fit-content}
+.grule::before,.grule::after{content:'';width:44px;height:1px;background:var(--sand2);opacity:.45}
+.gdot{width:4px;height:4px;border-radius:50%;background:var(--sand2)}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.vis{opacity:1;transform:translateY(0)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.hd-line{position:absolute;width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(176,154,114,.12),transparent)}
+.hd-circle{position:absolute;border-radius:50%;border:1px solid rgba(176,154,114,.1)}
+.hero-mono{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sub);position:relative;margin-bottom:16px}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,11vw,6.5rem);font-weight:300;color:var(--dk);line-height:.95;letter-spacing:.02em;position:relative}
+.hero-amp{font-style:italic;color:var(--sand2)}
+.hero-date{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sub);margin:18px 0 0;position:relative}
+.hero-divider{width:1px;height:40px;background:linear-gradient(180deg,transparent,var(--sand2),transparent);margin:14px auto;opacity:.5}
+.hero-loc{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
+.hero-photo-wrap{position:relative;width:200px;margin:26px auto 0}
+.hero-photo-shadow{position:absolute;inset:4px;border-radius:50% 50% 46% 46%;background:rgba(176,154,114,.15);transform:translateY(8px);filter:blur(12px);pointer-events:none}
+.hero-photo-frame{position:absolute;inset:-6px;border:1px solid rgba(176,154,114,.22);border-radius:50% 50% 46% 46%;pointer-events:none}
+.hero-photo-frame2{position:absolute;inset:-14px;border:1px solid rgba(176,154,114,.1);border-radius:50% 50% 46% 46%;pointer-events:none}
+.hero-photo{width:200px;height:265px;border-radius:50% 50% 46% 46%;overflow:hidden;border:1px solid rgba(176,154,114,.3);position:relative}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.35;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.scroll-hint span{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
+
+/* ── QUOTE ── */
+.qtext{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.18rem);color:var(--dk);line-height:1.9;max-width:460px;margin:14px auto;opacity:.85}
+.qsrc{font-size:.66rem;letter-spacing:.14em;color:var(--sand3);margin-top:12px;text-transform:uppercase}
+
+/* ── SAVE THE DATE ── */
+.std-card{border:1px solid var(--border);padding:36px 24px;text-align:center;max-width:380px;margin:22px auto 0;position:relative;background:var(--iv2)}
+.std-label{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--iv2);padding:0 12px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sub)}
+.std-names{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--dk)}
+.std-amp{font-style:italic;color:var(--sand2)}
+.std-date{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--sand3);margin:10px 0 5px}
+.std-venue{font-size:.8rem;color:var(--sub)}
+
+/* ── COUPLE ── */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+@media(max-width:460px){.cgrid{grid-template-columns:1fr}}
+.ccard{background:var(--iv);border:1px solid var(--border);padding:24px;text-align:center;position:relative}
+.ccard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--sand2),transparent);opacity:.4}
+.cav{width:90px;height:90px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:1px solid var(--border)}
+.cav img{width:100%;height:100%;object-fit:cover}
+.crole{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand3);margin-bottom:4px}
+.cname{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--dk);line-height:1.3}
+.cpar{font-size:.76rem;color:var(--sub);margin-top:7px;line-height:1.65}
+.cig{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.7rem;color:var(--sand3);text-decoration:none;border:1px solid var(--border);padding:4px 12px;transition:all .2s}
+.cig:hover{background:var(--sand3);color:#fff}
+
+/* ── GALLERY ── */
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 3px;margin-top:22px}
+@media(min-width:560px){.gg{grid-template-columns:repeat(5,1fr)}}
+.gi{aspect-ratio:3/4;overflow:hidden}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;cursor:zoom-in;display:block;filter:brightness(.98) saturate(.9)}
+.gi img:hover{transform:scale(1.06);filter:brightness(1) saturate(1)}
+
+/* ── SCHEDULE ── */
+.scgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media(max-width:460px){.scgrid{grid-template-columns:1fr}}
+.sccard{background:var(--iv);border:1px solid var(--border);padding:22px;text-align:center;position:relative;overflow:hidden}
+.sccard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--sand2),transparent);opacity:.5}
+.scicon{font-size:2rem;margin-bottom:9px}
+.sctype{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand3);margin-bottom:5px}
+.scday{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--dk)}
+.scmonth{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin:3px 0}
+.sctime{font-size:.86rem;color:var(--txt);margin-bottom:7px}
+.scvenue{font-size:.8rem;color:var(--sand3);font-weight:500}
+.scaddr{font-size:.74rem;color:var(--sub);margin-top:3px;line-height:1.5}
+.mapwrap{margin-top:18px;overflow:hidden;border:1px solid var(--border)}
+.mapwrap iframe{width:100%;height:210px;border:none;display:block;pointer-events:none;filter:saturate(.6) brightness(.95)}
+.mapbtn{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;background:var(--dk);color:var(--iv);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border:none;width:100%;cursor:pointer;font-family:inherit;transition:all .2s}
+.mapbtn:hover{background:var(--dk2)}
+
+/* ── COUNTDOWN ── */
+.cdgrid{display:inline-flex;overflow:hidden;margin-top:26px;border:1px solid var(--border)}
+.cdc{padding:16px 20px;border-right:1px solid var(--border)}
+.cdc:last-child{border-right:none}
+.cdn{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3rem);color:var(--dk);line-height:1}
+.cdl{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-top:3px}
+
+/* ── RSVP ── */
+.fbox{background:var(--iv);border:1px solid var(--border);padding:26px;margin-top:22px}
+.flbl{font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sand3);display:block;margin-bottom:5px}
+.finp{width:100%;background:var(--iv2);border:1px solid var(--border);padding:10px 13px;font-family:inherit;font-size:.86rem;color:var(--txt);outline:none;margin-bottom:13px;transition:border .2s}
+.finp:focus{border-color:var(--sand2)}
+.fta{min-height:78px;resize:vertical}
+.rrow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:13px}
+.rlbl{display:flex;align-items:center;gap:5px;font-size:.82rem;color:var(--txt);cursor:pointer}
+.rlbl input{accent-color:var(--sand3)}
+.fbtn{width:100%;padding:12px;background:var(--dk);border:none;color:var(--iv);font-family:inherit;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.fbtn:hover{background:var(--dk2)}
+#wlist{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+.wcard{background:var(--iv);border:1px solid var(--border);padding:15px}
+.wnew{animation:win .4s ease}
+@keyframes win{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.whd{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.wname{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--dk)}
+.wbadge{font-size:.6rem;letter-spacing:.07em;padding:2px 9px;border-radius:100px;border:1px solid}
+.bh{color:#16a34a;border-color:rgba(22,163,74,.3);background:rgba(22,163,74,.07)}
+.bt{color:#dc2626;border-color:rgba(220,38,38,.3);background:rgba(220,38,38,.07)}
+.wmsg{font-size:.82rem;color:var(--sub);line-height:1.6}
+</style>
+</head>
+<body>
+<audio id="bgaudio" loop preload="none"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg"></audio>
+<button class="mfab" id="mfab">♪</button>
+
+<!-- SPLASH -->
+<div class="splash" id="splash">
+  <div class="sp-bg-ornament"></div>
+  <div class="sp-ornament-line"></div>
+  <div class="sp-to">Kepada Yth.</div>
+  <div class="sp-guest">Bapak / Ibu / Saudara/i</div>
+  <div class="sp-names">Rafi <span class="sp-amp">&amp;</span> Nayla</div>
+  <div class="sp-date">12 April 2026 &nbsp;·&nbsp; Lombok, NTB</div>
+  <button class="sp-btn" id="openbtn" onclick="openInvite()">Buka Undangan</button>
+</div>
+
+<!-- MAIN -->
+<div id="main" style="display:none">
+
+<!-- HERO -->
+<section class="hero bg-hero">
+  <div class="hero-deco">
+    <div class="hd-line" style="left:15%;opacity:.6"></div>
+    <div class="hd-line" style="right:15%;opacity:.6"></div>
+    <div class="hd-circle" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.4"></div>
+    <div class="hd-circle" style="width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.5"></div>
+    <div class="hd-circle" style="width:200px;height:200px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.6"></div>
+  </div>
+  <div class="hero-mono rev">The Wedding of</div>
+  <h1 class="hero-names rev">Rafi<br><span class="hero-amp">&amp;</span><br>Nayla</h1>
+  <div class="hero-date rev">12 April 2026</div>
+  <div class="hero-divider"></div>
+  <div class="hero-loc rev">Lombok, Nusa Tenggara Barat</div>
+  <div class="hero-photo-wrap rev">
+    <div class="hero-photo-shadow"></div>
+    <div class="hero-photo-frame2"></div>
+    <div class="hero-photo-frame"></div>
+    <div class="hero-photo"><img src="https://picsum.photos/seed/ivory01/400/520" alt="Couple" loading="lazy"></div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 6l6 6 6-6" stroke="#b09a72" stroke-width="1.5"/></svg></div>
+</section>
+
+<!-- QUOTE -->
+<div class="bg-dots" style="padding:60px 24px;text-align:center" class="rev">
+  <div class="stag rev">Kata Pengantar</div>
+  <div class="grule rev"><div class="gdot"></div></div>
+  <p class="qtext rev">"Dengan memohon ridha Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada pernikahan kami. Kehadiran Bapak/Ibu/Saudara/i adalah kehormatan terbesar bagi kami."</p>
+</div>
+
+<!-- SAVE THE DATE -->
+<section class="bg-warm">
+  <div class="wrap">
+    <div class="std-card rev">
+      <span class="std-label">Save the Date</span>
+      <div class="std-names">Rafi <span class="std-amp">&amp;</span> Nayla</div>
+      <div class="std-date">Minggu, 12 April 2026</div>
+      <div class="std-venue">The Lombok Lodge, Nusa Tenggara Barat</div>
+    </div>
+  </div>
+</section>
+
+<!-- COUPLE -->
+<section class="bg-sand">
+  <div class="wrap">
+    <div class="stag rev">Mempelai</div>
+    <h2 class="stitle rev">Putra &amp; Putri Kami</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:12px" class="rev">Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan doa restu.</p>
+    <div class="cgrid rev">
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/ivory02/200/200" alt="Groom" loading="lazy"></div>
+        <div class="crole">Mempelai Pria</div>
+        <div class="cname">Muhammad Rafi Alfarizi, S.Kom.</div>
+        <div class="cpar">Putra Pertama dari<br><strong style="color:var(--dk)">Bapak H. Fauzan Maulana &amp; Ibu Hj. Siti Rahmah</strong><br>Mataram, Lombok</div>
+        <a href="#" class="cig">📷 @rafi.alfarizi</a>
+      </div>
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/ivory03/200/200" alt="Bride" loading="lazy"></div>
+        <div class="crole">Mempelai Wanita</div>
+        <div class="cname">Nayla Zahra Putri, S.Pd.</div>
+        <div class="cpar">Putri Pertama dari<br><strong style="color:var(--dk)">Bapak Drs. H. Zainuri &amp; Ibu Hj. Mardiyah</strong><br>Praya, Lombok Tengah</div>
+        <a href="#" class="cig">📷 @nayla.zahra</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY 1 -->
+<section class="bg-dots" style="padding:70px 0">
+  <div class="wrap"><div class="stag rev">Kenangan</div><h2 class="stitle rev">Galeri Foto</h2><div class="grule rev"><div class="gdot"></div></div></div>
+  <div class="gg rev" id="gal1" style="margin-top:22px"></div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="bg-cross">
+  <div class="wrap">
+    <div class="stag rev">Jadwal</div>
+    <h2 class="stitle rev">Acara Pernikahan</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:10px" class="rev">Merupakan suatu kehormatan apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu kepada kedua mempelai.</p>
+    <div class="scgrid rev">
+      <div class="sccard"><div class="scicon">🕌</div><div class="sctype">Akad Nikah</div><div class="scday">12</div><div class="scmonth">April 2026</div><div class="sctime">08:00 WITA</div><div class="scvenue">Masjid Islamic Centre NTB</div><div class="scaddr">Jl. Udayana, Mataram, Lombok</div></div>
+      <div class="sccard"><div class="scicon">🎊</div><div class="sctype">Resepsi</div><div class="scday">12</div><div class="scmonth">April 2026</div><div class="sctime">11:00 – 15:00 WITA</div><div class="scvenue">The Lombok Lodge</div><div class="scaddr">Jl. Raya Senggigi, Lombok Barat</div></div>
+    </div>
+    <div class="mapwrap rev">
+      <iframe src="https://maps.google.com/maps?q=-8.5833,116.1000&t=m&z=13&output=embed" allowfullscreen loading="lazy"></iframe>
+      <button class="mapbtn" onclick="window.open('https://maps.google.com/?q=-8.5833,116.1000','_blank')">📍 Buka di Google Maps</button>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="bg-dark" style="padding:70px 24px;text-align:center">
+  <div class="stag rev" style="color:var(--sand2)">Hitung Mundur</div>
+  <h2 class="rev" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--iv);text-align:center;font-weight:300">Menuju Hari Bahagia</h2>
+  <div class="grule rev" style="margin:13px auto;width:fit-content;display:flex;align-items:center;gap:10px">
+    <div style="width:44px;height:1px;background:var(--sand2);opacity:.4"></div>
+    <div style="width:4px;height:4px;border-radius:50%;background:var(--sand2)"></div>
+    <div style="width:44px;height:1px;background:var(--sand2);opacity:.4"></div>
+  </div>
+  <div class="cdgrid rev" style="background:rgba(250,247,242,.04);border-color:rgba(212,197,169,.2)">
+    <div class="cdc" style="border-color:rgba(212,197,169,.12)"><div class="cdn" style="color:var(--iv)" id="cd-d">00</div><div class="cdl" style="color:var(--sand2)">Hari</div></div>
+    <div class="cdc" style="border-color:rgba(212,197,169,.12)"><div class="cdn" style="color:var(--iv)" id="cd-h">00</div><div class="cdl" style="color:var(--sand2)">Jam</div></div>
+    <div class="cdc" style="border-color:rgba(212,197,169,.12)"><div class="cdn" style="color:var(--iv)" id="cd-m">00</div><div class="cdl" style="color:var(--sand2)">Menit</div></div>
+    <div class="cdc" style="border-right:none"><div class="cdn" style="color:var(--iv)" id="cd-s">00</div><div class="cdl" style="color:var(--sand2)">Detik</div></div>
+  </div>
+</div>
+
+<!-- GALLERY 2 -->
+<section class="bg-lines" style="padding:0 0 70px"><div class="gg" id="gal2"></div></section>
+
+<!-- RSVP -->
+<section class="bg-warm">
+  <div class="wrap">
+    <div class="stag rev">Buku Tamu</div>
+    <h2 class="stitle rev">Ucapan &amp; RSVP</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:10px" class="rev">Ucapkan selamat dan konfirmasikan kehadiran Anda kepada kedua mempelai.</p>
+    <div class="fbox rev">
+      <label class="flbl">Nama Lengkap</label><input class="finp" type="text" id="wname" placeholder="Nama Anda">
+      <label class="flbl">Ucapan &amp; Doa</label><textarea class="finp fta" id="wmsg" placeholder="Tulis ucapan untuk mempelai..."></textarea>
+      <label class="flbl">Konfirmasi Kehadiran</label>
+      <div class="rrow"><label class="rlbl"><input type="radio" name="rsvp" value="hadir" checked> ✓ Hadir</label><label class="rlbl"><input type="radio" name="rsvp" value="tidak"> ✕ Tidak Hadir</label></div>
+      <button class="fbtn" id="wsubmit">Kirim Ucapan</button>
+    </div>
+    <div id="wlist"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="bg-dark-sand" style="border-top:1px solid rgba(176,154,114,.12);padding:50px 24px;text-align:center">
+  <div style="width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--sand2),transparent);margin:0 auto 20px;opacity:.5"></div>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--iv)">Rafi &amp; Nayla</div>
+  <div style="font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sand2);opacity:.55;margin-top:4px">12 April 2026 · Lombok, NTB</div>
+  <div style="margin:16px auto;width:30px;height:1px;background:var(--sand2);opacity:.35"></div>
+  <div style="font-size:.66rem;color:rgba(176,154,114,.4);letter-spacing:.08em">Made with ♡ InviteID · Rix Studio</div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function openInvite(){
+  document.getElementById('splash').classList.add('gone');
+  document.getElementById('main').style.display='block';
+  buildGallery('gal1',[1800,1810,1820,1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990],400,520);
+  buildGallery('gal2',[1801,1812,1823,1834,1845,1856,1867,1878,1889,1900,1911,1922,1933,1944,1955,1966,1977,1988,1999,2010],400,520);
+  initReveal();startCountdown(2026,4,12);initGB();setTimeout(tryAutoplay,700);
+}
+var musicOn=false,audio=document.getElementById('bgaudio');
+document.getElementById('mfab').onclick=function(){if(musicOn){audio.pause();musicOn=false;this.classList.remove('on');this.textContent='♪';}else{audio.play().catch(function(){});musicOn=true;this.classList.add('on');this.textContent='♬';}};
+function tryAutoplay(){audio.play().then(function(){musicOn=true;var b=document.getElementById('mfab');b.classList.add('on');b.textContent='♬';}).catch(function(){});}
+function initReveal(){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});}
+function buildGallery(id,seeds,w,h){var c=document.getElementById(id);if(!c)return;seeds.forEach(function(s){var d=document.createElement('div');d.className='gi';var img=document.createElement('img');img.src='https://picsum.photos/seed/'+s+'/'+w+'/'+h;img.loading='lazy';img.alt='Photo';img.onclick=function(){openLB(img.src);};d.appendChild(img);c.appendChild(d);});}
+function openLB(src){var lb=document.createElement('div');lb.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(10px)';lb.innerHTML='<img src="'+src+'" style="max-width:92vw;max-height:88vh;border-radius:4px">';lb.onclick=function(){lb.remove();};document.body.appendChild(lb);}
+function startCountdown(y,mo,d){var target=new Date(y,mo-1,d,9,0,0);function upd(){var diff=target-new Date();if(diff<=0)return;var s=Math.floor(diff/1e3),mi=Math.floor(s/60),h=Math.floor(mi/60),da=Math.floor(h/24),el;if((el=document.getElementById('cd-d')))el.textContent=String(da).padStart(2,'0');if((el=document.getElementById('cd-h')))el.textContent=String(h%24).padStart(2,'0');if((el=document.getElementById('cd-m')))el.textContent=String(mi%60).padStart(2,'0');if((el=document.getElementById('cd-s')))el.textContent=String(s%60).padStart(2,'0');}upd();setInterval(upd,1000);}
+function initGB(){var sample=[{n:'Hendra Kusuma',s:'hadir',m:'Selamat menempuh hidup baru! Semoga sakinah mawaddah warahmah 💝'},{n:'Ayu Lestari',s:'hadir',m:'Congrats Rafi & Nayla! Semoga langgeng dan selalu bahagia ya 🌸'},{n:'Bapak Santoso',s:'tidak',m:'Mohon maaf tidak dapat hadir. Turut mendoakan semoga pernikahan kalian diberkahi 🙏'}];var list=document.getElementById('wlist');function render(w,pre){var c=document.createElement('div');c.className='wcard'+(pre?' wnew':'');c.innerHTML='<div class="whd"><span class="wname">'+w.n+'</span><span class="wbadge '+(w.s==='hadir'?'bh':'bt')+'">'+(w.s==='hadir'?'✓ Hadir':'✕ Tidak Hadir')+'</span></div><p class="wmsg">'+w.m+'</p>';if(pre)list.insertBefore(c,list.firstChild);else list.appendChild(c);}sample.forEach(function(w){render(w,false);});document.getElementById('wsubmit').onclick=function(){var n=document.getElementById('wname').value.trim(),m=document.getElementById('wmsg').value.trim(),s=document.querySelector('input[name="rsvp"]:checked');if(!n||!m){alert('Mohon isi nama dan ucapan Anda.');return;}render({n:n,s:s?s.value:'hadir',m:m},true);document.getElementById('wname').value='';document.getElementById('wmsg').value='';};}
+</script>
+</body>
+</html>

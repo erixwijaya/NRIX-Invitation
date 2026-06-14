@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pawiwahan – Wayan & Komang | Bali Sacred</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#C9A84C;--g2:#E8C96A;--dk:#1A0D03;--br:#3B1F0A;--cr:#FDF6E8;--sub:rgba(253,246,232,0.52)}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--cr);font-family:'Jost',sans-serif;overflow-x:hidden}
+.splash{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at center,#2e1608,#0a0300);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;transition:opacity .9s,visibility .9s}
+.splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+.mandala{width:130px;height:130px;margin:0 auto 20px;animation:spin 40s linear infinite;opacity:.45}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sp-to{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:5px}
+.sp-guest{font-family:'IM Fell English',serif;font-style:italic;font-size:1.25rem;color:var(--cr);margin-bottom:22px}
+.sp-names{font-family:'Cinzel',serif;font-size:clamp(2rem,7vw,3.8rem);color:var(--g2);letter-spacing:.06em;line-height:1.1}
+.sp-amp{font-family:'IM Fell English',serif;font-style:italic;color:var(--cr)}
+.sp-date{font-size:.7rem;letter-spacing:.18em;color:var(--g);margin:12px 0 28px;opacity:.7}
+.sp-btn{padding:12px 34px;background:transparent;border:1.5px solid var(--g);color:var(--g);font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s}
+.sp-btn:hover{background:var(--g);color:var(--dk)}
+.mfab{position:fixed;bottom:22px;right:22px;z-index:1000;width:46px;height:46px;border-radius:50%;background:var(--br);border:1.5px solid var(--g);color:var(--g);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.mfab.on,.mfab:hover{background:var(--g);color:var(--dk)}
+section{padding:70px 0}
+.wrap{max-width:580px;margin:0 auto;padding:0 22px}
+.stag{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--g);text-align:center;margin-bottom:7px}
+.stitle{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--g2);text-align:center;font-weight:400;line-height:1.2}
+.grule{display:flex;align-items:center;gap:10px;margin:13px auto;width:fit-content}
+.grule::before,.grule::after{content:'';width:44px;height:1px;background:var(--g);opacity:.45}
+.gdot{width:5px;height:5px;border-radius:50%;background:var(--g)}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.vis{opacity:1;transform:translateY(0)}
+.hero{min-height:100vh;background:radial-gradient(ellipse at 50% 30%,#3B1F0A,#0a0300);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,.08) 1px,transparent 1px);background-size:30px 30px}
+.hero-tag{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.32em;color:var(--g);opacity:.75;position:relative}
+.hero-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:.82rem;color:rgba(253,246,232,.5);letter-spacing:.1em;margin:10px 0 14px;position:relative}
+.hero-names{font-family:'Cinzel',serif;font-size:clamp(2.8rem,10vw,5.8rem);color:var(--g2);line-height:1;letter-spacing:.04em;position:relative}
+.hero-amp{font-family:'IM Fell English',serif;font-style:italic;color:var(--cr);font-size:.52em}
+.hero-date{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g);opacity:.65;margin:16px 0 0;position:relative}
+.hero-frame{position:relative;width:200px;margin:28px auto 0}
+.ring1{position:absolute;inset:-10px;border-radius:50%;border:1px solid var(--g);opacity:.4;animation:rpulse 3s ease-in-out infinite}
+.ring2{position:absolute;inset:-22px;border-radius:50%;border:1px solid var(--g);opacity:.18;animation:rpulse 3s ease-in-out infinite .6s}
+@keyframes rpulse{0%,100%{opacity:.12}50%{opacity:.45}}
+.hero-img{width:200px;height:265px;border-radius:50% 50% 46% 46%;overflow:hidden;border:2px solid var(--g)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.4;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.scroll-hint span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g)}
+.qsec{background:linear-gradient(180deg,#0a0300,#2a1505,#0a0300);padding:60px 24px;text-align:center}
+.qtext{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.18rem);color:var(--cr);line-height:1.88;max-width:480px;margin:14px auto;opacity:.88}
+.qsrc{font-size:.68rem;letter-spacing:.12em;color:var(--g);margin-top:12px;text-transform:uppercase}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+@media(max-width:460px){.cgrid{grid-template-columns:1fr}}
+.ccard{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.18);border-radius:4px;padding:22px;text-align:center}
+.cav{width:88px;height:88px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:2px solid var(--g)}
+.cav img{width:100%;height:100%;object-fit:cover}
+.crole{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:4px}
+.cname{font-family:'Cinzel',serif;font-size:.95rem;color:var(--g2);line-height:1.3}
+.cpar{font-size:.76rem;color:var(--sub);margin-top:7px;line-height:1.65}
+.cig{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.7rem;color:var(--g);text-decoration:none;border:1px solid rgba(201,168,76,.28);border-radius:100px;padding:4px 12px;transition:all .2s}
+.cig:hover{background:var(--g);color:var(--dk)}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 4px;margin-top:22px}
+@media(min-width:560px){.gg{grid-template-columns:repeat(5,1fr)}}
+.gi{aspect-ratio:3/4;overflow:hidden;border-radius:2px}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;cursor:zoom-in;display:block}
+.gi img:hover{transform:scale(1.07)}
+.scgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media(max-width:460px){.scgrid{grid-template-columns:1fr}}
+.sccard{border:1px solid rgba(201,168,76,.22);border-radius:4px;padding:22px;text-align:center}
+.scicon{font-size:2rem;margin-bottom:9px}
+.sctype{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:5px}
+.scday{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--g2)}
+.scmonth{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin:3px 0}
+.sctime{font-size:.86rem;color:var(--cr);margin-bottom:7px}
+.scvenue{font-size:.8rem;color:var(--g);font-weight:500}
+.scaddr{font-size:.74rem;color:var(--sub);margin-top:3px;line-height:1.5}
+.mapwrap{margin-top:18px;border-radius:4px;overflow:hidden;border:1px solid rgba(201,168,76,.18)}
+.mapwrap iframe{width:100%;height:210px;border:none;display:block;pointer-events:none;filter:sepia(.5) brightness(.7)}
+.mapbtn{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;background:var(--br);color:var(--g);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:none;width:100%;cursor:pointer;font-family:inherit;transition:all .2s}
+.mapbtn:hover{background:var(--g);color:var(--dk)}
+.cdsec{background:#0a0300;padding:70px 24px;text-align:center}
+.cdgrid{display:inline-flex;border:1px solid rgba(201,168,76,.22);border-radius:4px;overflow:hidden;margin-top:26px}
+.cdc{padding:16px 20px;border-right:1px solid rgba(201,168,76,.12)}
+.cdc:last-child{border-right:none}
+.cdn{font-family:'Cinzel',serif;font-size:clamp(2rem,6vw,3rem);color:var(--g2);line-height:1}
+.cdl{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g);opacity:.65;margin-top:3px}
+.fbox{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.14);border-radius:4px;padding:26px;margin-top:22px}
+.flbl{font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:5px}
+.finp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.18);border-radius:2px;padding:10px 13px;font-family:inherit;font-size:.86rem;color:var(--cr);outline:none;margin-bottom:13px;transition:border .2s}
+.finp:focus{border-color:var(--g)}
+.fta{min-height:78px;resize:vertical}
+.rrow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:13px}
+.rlbl{display:flex;align-items:center;gap:5px;font-size:.82rem;color:var(--cr);cursor:pointer}
+.rlbl input{accent-color:var(--g)}
+.fbtn{width:100%;padding:12px;background:var(--br);border:1.5px solid var(--g);color:var(--g);font-family:inherit;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:2px}
+.fbtn:hover{background:var(--g);color:var(--dk)}
+#wlist{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+.wcard{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.1);border-radius:4px;padding:15px}
+.wnew{animation:win .4s ease}
+@keyframes win{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.whd{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.wname{font-family:'Cinzel',serif;font-size:.88rem;color:var(--g2)}
+.wbadge{font-size:.6rem;letter-spacing:.07em;padding:2px 9px;border-radius:100px;border:1px solid}
+.bh{color:#4ade80;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.07)}
+.bt{color:#f87171;border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.07)}
+.wmsg{font-size:.82rem;color:var(--sub);line-height:1.6}
+.ifooter{background:#08030e;padding:44px 24px;text-align:center;border-top:1px solid rgba(201,168,76,.12)}
+</style>
+</head>
+<body>
+<audio id="bgaudio" loop preload="none"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
+<button class="mfab" id="mfab" title="Musik">♪</button>
+
+<div class="splash" id="splash">
+  <svg class="mandala" viewBox="0 0 200 200" fill="none">
+    <circle cx="100" cy="100" r="90" stroke="#C9A84C" stroke-width=".5" opacity=".6"/>
+    <circle cx="100" cy="100" r="70" stroke="#C9A84C" stroke-width=".5" opacity=".45"/>
+    <circle cx="100" cy="100" r="50" stroke="#C9A84C" stroke-width=".5" opacity=".35"/>
+    <circle cx="100" cy="100" r="30" stroke="#C9A84C" stroke-width=".8" opacity=".6"/>
+    <g stroke="#C9A84C" stroke-width=".4" opacity=".4">
+      <line x1="100" y1="10" x2="100" y2="190"/><line x1="10" y1="100" x2="190" y2="100"/>
+      <line x1="29" y1="29" x2="171" y2="171"/><line x1="171" y1="29" x2="29" y2="171"/>
+    </g>
+    <g fill="#C9A84C" opacity=".65">
+      <circle cx="100" cy="30" r="3"/><circle cx="100" cy="170" r="3"/>
+      <circle cx="30" cy="100" r="3"/><circle cx="170" cy="100" r="3"/>
+      <circle cx="47" cy="47" r="2.5"/><circle cx="153" cy="47" r="2.5"/>
+      <circle cx="47" cy="153" r="2.5"/><circle cx="153" cy="153" r="2.5"/>
+    </g>
+    <circle cx="100" cy="100" r="6" fill="#C9A84C" opacity=".85"/>
+  </svg>
+  <div class="sp-to">Kepada Yth.</div>
+  <div class="sp-guest">Bapak / Ibu / Saudara/i</div>
+  <div class="sp-names">Wayan <span class="sp-amp">&amp;</span> Komang</div>
+  <div class="sp-date">27 Juli 2025 &nbsp;·&nbsp; Bali</div>
+  <button class="sp-btn" id="openbtn" onclick="openInvite()">✦ Buka Undangan</button>
+</div>
+
+<div id="main" style="display:none">
+<section class="hero">
+  <div class="hero-tag rev">PAWIWAHAN</div>
+  <div class="hero-sub rev">The Wedding of</div>
+  <h1 class="hero-names rev">Wayan<br><span class="hero-amp">&amp;</span><br>Komang</h1>
+  <div class="hero-date rev">Bali &nbsp;·&nbsp; 27 Juli 2025</div>
+  <div class="hero-frame rev">
+    <div class="ring2"></div><div class="ring1"></div>
+    <div class="hero-img"><img src="https://picsum.photos/seed/bali01/400/520" alt="Couple" loading="lazy"></div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 6l6 6 6-6" stroke="#C9A84C" stroke-width="1.5"/></svg>
+  </div>
+</section>
+
+<div class="qsec rev">
+  <div class="stag">Sabda Weda</div>
+  <div class="grule"><div class="gdot"></div></div>
+  <p class="qtext">"Dalam sebuah pernikahan kalian disatukan demi sebuah kebahagiaan dengan janji hati untuk saling membahagiakan. Bersamamu engkau akan hidup selamanya karena Tuhan pasti akan memberikan karunia sebagai pelindung dan saksi dalam pernikahan ini."</p>
+  <div class="qsrc">— Rgveda Samhita X.85.36 —</div>
+</div>
+
+<section style="background:#120903">
+  <div class="wrap">
+    <div class="stag rev">Mempelai</div>
+    <h2 class="stitle rev">Dua Insan, Satu Cinta</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:12px" class="rev">Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami memohon doa restu Bapak/Ibu/Saudara/i.</p>
+    <div class="cgrid rev">
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/bali02/200/200" alt="Groom" loading="lazy"></div>
+        <div class="crole">Mempelai Pria</div>
+        <div class="cname">I Wayan Dharma Putra, S.T.</div>
+        <div class="cpar">Putra Pertama dari<br><strong style="color:var(--g2)">Bapak I Made Sudharma &amp; Ibu Ni Nyoman Sarini</strong></div>
+        <a href="#" class="cig">📷 @wayandharmaptm</a>
+      </div>
+      <div class="ccard">
+        <div class="cav"><img src="https://picsum.photos/seed/bali03/200/200" alt="Bride" loading="lazy"></div>
+        <div class="crole">Mempelai Wanita</div>
+        <div class="cname">Ni Komang Ayu Lestari, A.Md.</div>
+        <div class="cpar">Putri Pertama dari<br><strong style="color:var(--g2)">Bapak I Ketut Wirawan &amp; Ibu Ni Made Suerni</strong></div>
+        <a href="#" class="cig">📷 @komangayulestt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#0a0300">
+  <div class="wrap"><div class="stag rev">Kenangan</div><h2 class="stitle rev">Galeri Foto</h2><div class="grule rev"><div class="gdot"></div></div></div>
+  <div class="gg rev" id="gal1" style="margin-top:22px"></div>
+</section>
+
+<section style="background:radial-gradient(ellipse at 50% 0%,#3B1F0A,#0a0300)">
+  <div class="wrap">
+    <div class="stag rev">Jadwal</div>
+    <h2 class="stitle rev">Acara Kami</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <p style="text-align:center;font-size:.84rem;color:var(--sub);line-height:1.72;margin-top:10px" class="rev">Merupakan suatu kehormatan dan kebahagiaan apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+    <div class="scgrid rev">
+      <div class="sccard"><div class="scicon">🛕</div><div class="sctype">Upacara Pawiwahan</div><div class="scday">27</div><div class="scmonth">Juli 2025</div><div class="sctime">09:00 WITA – Selesai</div><div class="scvenue">Pura Agung Besakih</div><div class="scaddr">Karangasem, Bali</div></div>
+      <div class="sccard"><div class="scicon">🎊</div><div class="sctype">Resepsi</div><div class="scday">27</div><div class="scmonth">Juli 2025</div><div class="sctime">12:00 – 17:00 WITA</div><div class="scvenue">Bali NDCC</div><div class="scaddr">Kawasan Pariwisata Nusa Dua</div></div>
+    </div>
+    <div class="mapwrap rev">
+      <iframe src="https://maps.google.com/maps?q=-8.3742,115.4517&t=m&z=14&output=embed" allowfullscreen loading="lazy"></iframe>
+      <button class="mapbtn" onclick="window.open('https://maps.google.com/?q=-8.3742,115.4517','_blank')">📍 Buka di Google Maps</button>
+    </div>
+  </div>
+</section>
+
+<div class="cdsec rev">
+  <div class="stag">Hitung Mundur</div>
+  <h2 class="stitle">Menuju Hari Bahagia</h2>
+  <div class="grule"><div class="gdot"></div></div>
+  <div class="cdgrid">
+    <div class="cdc"><div class="cdn" id="cd-d">00</div><div class="cdl">Hari</div></div>
+    <div class="cdc"><div class="cdn" id="cd-h">00</div><div class="cdl">Jam</div></div>
+    <div class="cdc"><div class="cdn" id="cd-m">00</div><div class="cdl">Menit</div></div>
+    <div class="cdc"><div class="cdn" id="cd-s">00</div><div class="cdl">Detik</div></div>
+  </div>
+</div>
+
+<section style="background:#0a0300;padding:0 0 70px"><div class="gg" id="gal2"></div></section>
+
+<section style="background:#120903">
+  <div class="wrap">
+    <div class="stag rev">Buku Tamu</div>
+    <h2 class="stitle rev">Ucapan &amp; RSVP</h2>
+    <div class="grule rev"><div class="gdot"></div></div>
+    <div class="fbox rev">
+      <label class="flbl">Nama Lengkap</label>
+      <input class="finp" type="text" id="wname" placeholder="Nama Anda">
+      <label class="flbl">Ucapan &amp; Doa</label>
+      <textarea class="finp fta" id="wmsg" placeholder="Tulis ucapan untuk mempelai..."></textarea>
+      <label class="flbl">Konfirmasi Kehadiran</label>
+      <div class="rrow">
+        <label class="rlbl"><input type="radio" name="rsvp" value="hadir" checked> ✓ Hadir</label>
+        <label class="rlbl"><input type="radio" name="rsvp" value="tidak"> ✕ Tidak Hadir</label>
+      </div>
+      <button class="fbtn" id="wsubmit">Kirim Ucapan ✦</button>
+    </div>
+    <div id="wlist"></div>
+  </div>
+</section>
+
+<div class="ifooter">
+  <div style="font-family:'Cinzel',serif;font-size:1.4rem;color:var(--g2);margin-bottom:5px">Wayan &amp; Komang</div>
+  <div style="font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);opacity:.55">27 Juli 2025 &nbsp;·&nbsp; Bali</div>
+  <div style="margin:14px auto;width:34px;height:1px;background:var(--g);opacity:.35"></div>
+  <div style="font-size:.66rem;color:rgba(201,168,76,.4);letter-spacing:.08em">Made with ✦ InviteID · Rix Studio</div>
+</div>
+</div>
+
+<script>
+function openInvite(){
+  document.getElementById('splash').classList.add('gone');
+  document.getElementById('main').style.display='block';
+  buildGallery('gal1',[10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200],400,520);
+  buildGallery('gal2',[210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400],400,520);
+  initReveal(); startCountdown(2025,7,27); initGB(); setTimeout(tryAutoplay,700);
+}
+var musicOn=false, audio=document.getElementById('bgaudio');
+document.getElementById('mfab').onclick=function(){
+  if(musicOn){audio.pause();musicOn=false;this.classList.remove('on');this.textContent='♪';}
+  else{audio.play().catch(function(){});musicOn=true;this.classList.add('on');this.textContent='♬';}
+};
+function tryAutoplay(){audio.play().then(function(){musicOn=true;var b=document.getElementById('mfab');b.classList.add('on');b.textContent='♬';}).catch(function(){});}
+function initReveal(){
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});
+  document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});
+}
+function buildGallery(id,seeds,w,h){
+  var c=document.getElementById(id); if(!c)return;
+  seeds.forEach(function(s){
+    var d=document.createElement('div');d.className='gi';
+    var img=document.createElement('img');img.src='https://picsum.photos/seed/'+s+'/'+w+'/'+h;img.loading='lazy';img.alt='Photo';
+    img.onclick=function(){openLB(img.src);}; d.appendChild(img); c.appendChild(d);
+  });
+}
+function openLB(src){
+  var lb=document.createElement('div');
+  lb.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(10px)';
+  lb.innerHTML='<img src="'+src+'" style="max-width:92vw;max-height:88vh;border-radius:6px">';
+  lb.onclick=function(){lb.remove();}; document.body.appendChild(lb);
+}
+function startCountdown(y,mo,d){
+  var target=new Date(y,mo-1,d,9,0,0);
+  function upd(){
+    var diff=target-new Date(); if(diff<=0)return;
+    var s=Math.floor(diff/1e3),mi=Math.floor(s/60),h=Math.floor(mi/60),da=Math.floor(h/24),el;
+    if((el=document.getElementById('cd-d')))el.textContent=String(da).padStart(2,'0');
+    if((el=document.getElementById('cd-h')))el.textContent=String(h%24).padStart(2,'0');
+    if((el=document.getElementById('cd-m')))el.textContent=String(mi%60).padStart(2,'0');
+    if((el=document.getElementById('cd-s')))el.textContent=String(s%60).padStart(2,'0');
+  }
+  upd(); setInterval(upd,1000);
+}
+function initGB(){
+  var sample=[{n:'Putu Ardiasa',s:'hadir',m:'Om Swastyastu. Selamat menempuh pawiwahan! 🙏'},{n:'Ni Wayan Sari',s:'hadir',m:'Selamat ya, semoga langgeng selamanya! 🌺'},{n:'Made Sudiarta',s:'tidak',m:'Mohon maaf tidak bisa hadir. Doa terbaik selalu menyertai 🙏'}];
+  var list=document.getElementById('wlist');
+  function render(w,pre){
+    var c=document.createElement('div');c.className='wcard'+(pre?' wnew':'');
+    c.innerHTML='<div class="whd"><span class="wname">'+w.n+'</span><span class="wbadge '+(w.s==='hadir'?'bh':'bt')+'">'+(w.s==='hadir'?'✓ Hadir':'✕ Tidak Hadir')+'</span></div><p class="wmsg">'+w.m+'</p>';
+    if(pre)list.insertBefore(c,list.firstChild);else list.appendChild(c);
+  }
+  sample.forEach(function(w){render(w,false);});
+  document.getElementById('wsubmit').onclick=function(){
+    var n=document.getElementById('wname').value.trim(),m=document.getElementById('wmsg').value.trim(),s=document.querySelector('input[name="rsvp"]:checked');
+    if(!n||!m){alert('Mohon isi nama dan ucapan Anda.');return;}
+    render({n:n,s:s?s.value:'hadir',m:m},true);
+    document.getElementById('wname').value='';document.getElementById('wmsg').value='';
+  };
+}
+</script>
+</body>
+</html>
