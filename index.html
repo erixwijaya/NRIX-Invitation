@@ -1,0 +1,462 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#C9A84C;--g2:#E8C96A;--g3:#9B7A2F;
+  --dk:#120D06;--dk2:#1C150C;
+  --cr:#FAF7F1;--cr2:#F3EDE2;--cr3:#E5DDD0;
+  --txt:#2A2016;--mt:#8C7A62;--bd:rgba(201,168,76,.15)
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cr2);color:var(--txt);overflow-x:hidden}
+/* NAV */
+.nav{background:var(--dk);border-bottom:1px solid rgba(201,168,76,.12);padding:0 20px;height:52px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:1.1rem;color:var(--g2);letter-spacing:.06em;font-weight:500}
+.nav-logo em{font-style:italic;color:var(--g);font-size:1.25rem}
+.nav-sp{flex:1}
+.nav-cta{padding:6px 16px;background:transparent;border:1px solid var(--g);color:var(--g);font-size:.71rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s}
+.nav-cta:hover{background:var(--g);color:var(--dk)}
+/* HERO */
+.hero{background:var(--dk);padding:52px 20px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:60px 60px}
+.hero::after{content:'';position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:500px;height:160px;background:radial-gradient(ellipse,rgba(201,168,76,.1) 0%,transparent 70%);pointer-events:none}
+.hero-tag{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);margin-bottom:14px;opacity:.85;position:relative;display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-tag::before,.hero-tag::after{content:'';width:24px;height:1px;background:var(--g);opacity:.5}
+.hero-h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:300;color:var(--cr);line-height:1.1;letter-spacing:.015em;position:relative;margin-bottom:5px}
+.hero-h1 em{font-style:italic;color:var(--g)}
+.hero-sub{font-size:.84rem;color:rgba(250,247,241,.45);max-width:400px;margin:10px auto 22px;line-height:1.7;font-weight:300;position:relative}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 26px;background:var(--g);color:var(--dk);border:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .22s;position:relative}
+.hero-btn:hover{background:var(--g2);transform:translateY(-2px)}
+.hero-stats{display:flex;align-items:center;justify-content:center;margin-top:28px;border:1px solid rgba(201,168,76,.1);border-radius:8px;overflow:hidden;max-width:340px;margin-left:auto;margin-right:auto;position:relative}
+.hs{flex:1;padding:12px 8px;text-align:center;border-right:1px solid rgba(201,168,76,.08)}
+.hs:last-child{border-right:none}
+.hs-n{font-size:1.5rem;color:var(--g2);line-height:1}
+.hs-l{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,247,241,.3);margin-top:2px}
+/* THEMES */
+.themes-wrap{padding:40px 16px 48px}
+.sec-hd{text-align:center;margin-bottom:28px}
+.sec-tag{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.sec-title{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:300;color:var(--txt)}
+.sec-title em{font-style:italic;color:var(--g3)}
+.sec-sub{font-size:.82rem;color:var(--mt);margin-top:7px;line-height:1.65}
+/* FILTER */
+.filter{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.fb{padding:6px 14px;border-radius:100px;border:1px solid var(--bd);background:transparent;color:var(--mt);font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .18s}
+.fb:hover{border-color:var(--g);color:var(--g3)}
+.fb.on{background:var(--dk);border-color:var(--dk);color:var(--g2)}
+/* GRID */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;max-width:1100px;margin:0 auto}
+.tcard{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.07);box-shadow:0 2px 10px rgba(18,13,6,.07);transition:transform .26s,box-shadow .26s;cursor:pointer;overflow:hidden;position:relative}
+.tcard:hover{transform:translateY(-7px);box-shadow:0 16px 48px rgba(18,13,6,.18)}
+.tcard.hidden{display:none}
+/* PREVIEW TOP */
+.tcard-top{height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:16px}
+.tcard-bg{position:absolute;inset:0;transition:transform .35s}
+.tcard:hover .tcard-bg{transform:scale(1.05)}
+/* PHONE */
+.phone{position:relative;z-index:2;width:90px;height:162px;background:#0a0a0a;border-radius:14px;border:2px solid #1a1a1a;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .28s;flex-shrink:0}
+.tcard:hover .phone{transform:scale(1.06)}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:30px;height:4px;background:#0a0a0a;border-radius:0 0 6px 6px;z-index:5}
+.phone-scr{width:100%;height:100%;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:7px 5px 5px}
+.pc-em{font-size:14px;margin-bottom:4px}
+.pc-photo{width:30px;height:40px;border-radius:50% 50% 44% 44%;overflow:hidden;margin-bottom:3px;border:1.5px solid}
+.pc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-names{font-size:6.5px;line-height:1.2;text-align:center;margin-bottom:2px}
+.pc-rule{width:14px;height:0.8px;margin:2px auto;border-radius:1px;opacity:.5}
+.pc-date{font-size:3.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-bottom:4px}
+.pc-gal{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;width:100%;margin-bottom:3px}
+.pc-gi{height:16px;border-radius:1px;overflow:hidden}
+.pc-gi img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-cd{display:flex;justify-content:center;gap:2px;margin-bottom:3px}
+.pc-cdi{width:12px;height:12px;border-radius:1.5px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:0.8px solid;background:rgba(0,0,0,.18)}
+.pc-cdi-n{font-size:4px;font-weight:600;line-height:1}
+.pc-cdi-l{font-size:2.5px;opacity:.55;line-height:1}
+.pc-mbtn{width:58%;padding:2.5px;border-radius:100px;font-size:3.5px;font-weight:600;text-align:center;margin:0 auto}
+/* SIDE INFO */
+.tcard-side{position:relative;z-index:2;margin-left:10px;flex:1;text-align:left}
+.tcard-sn{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px}
+.tcard-name-s{font-size:.9rem;font-weight:400;color:#fff;line-height:1.2;margin-bottom:2px}
+.tcard-cat-s{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.tcard-feat{font-size:.6rem;color:rgba(255,255,255,.38);padding:1.5px 0;display:flex;align-items:center;gap:4px}
+.tcard-feat::before{content:'✓';opacity:.45;font-size:.55rem;flex-shrink:0}
+/* HOVER OVERLAY */
+.tcard-ov{position:absolute;inset:0;z-index:4;background:rgba(0,0,0,.52);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .22s}
+.tcard:hover .tcard-ov{opacity:1}
+.tcard-ov-btn{padding:8px 18px;background:#fff;color:var(--dk);border:none;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transform:translateY(7px);transition:transform .22s;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.tcard:hover .tcard-ov-btn{transform:translateY(0)}
+/* BADGE */
+.tbadge{position:absolute;top:10px;left:10px;z-index:10;font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px}
+.tbadge-pop{background:var(--g);color:var(--dk)}
+.tbadge-new{background:#ef4444;color:#fff}
+.tbadge-feat{background:var(--dk);color:var(--g);border:1px solid var(--g)}
+/* CARD BOTTOM */
+.tcard-bot{padding:11px 14px 13px;border-top:1px solid rgba(0,0,0,.06);background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tcard-bot-name{font-size:1rem;font-weight:600;color:var(--txt);line-height:1.1}
+.tcard-bot-cat{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mt);margin-top:1px}
+.tcard-bot-acts{display:flex;gap:5px;flex-shrink:0}
+.t-btn-p{padding:6px 12px;border-radius:6px;font-size:.7rem;font-weight:500;border:1.5px solid var(--dk);background:var(--dk);color:var(--cr);cursor:pointer;transition:all .18s;white-space:nowrap}
+.t-btn-p:hover{background:var(--dk2)}
+.t-btn-d{padding:6px 10px;border-radius:6px;font-size:.7rem;font-weight:500;border:1.5px solid var(--g);background:transparent;color:var(--g3);cursor:pointer;transition:all .18s}
+.t-btn-d:hover{background:var(--g);color:#fff}
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:500;background:rgba(8,5,2,.87);display:flex;align-items:center;justify-content:center;padding:10px;display:none}
+.modal-bg.open{display:flex;animation:mfade .18s ease}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+@keyframes mup{from{transform:translateY(22px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal{background:#fff;border-radius:18px;width:100%;max-width:880px;max-height:94svh;overflow:hidden;display:flex;flex-direction:column;animation:mup .24s ease;box-shadow:0 28px 70px rgba(0,0,0,.42)}
+.mbar{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid rgba(0,0,0,.07);background:#faf9f7;flex-shrink:0}
+.micon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.mtitle{font-size:1.1rem;font-weight:400;color:var(--txt);line-height:1.2}
+.msub{font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mt)}
+.msp{flex:1}
+.mcl{width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.1);background:transparent;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mt);transition:all .14s;flex-shrink:0}
+.mcl:hover{background:#efefef;color:var(--txt)}
+.mdevbar{display:flex;align-items:center;gap:6px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.05);background:#f4f2ef;flex-shrink:0}
+.dvb{padding:4px 11px;border-radius:5px;border:1px solid rgba(0,0,0,.1);background:transparent;font-size:.7rem;font-weight:500;color:var(--mt);cursor:pointer;transition:all .14s;display:flex;align-items:center;gap:4px}
+.dvb.on,.dvb:hover{background:var(--dk);color:#fff;border-color:var(--dk)}
+.mds{flex:1}
+.mextlink{display:flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid rgba(0,0,0,.1);border-radius:5px;font-size:.68rem;color:var(--mt);text-decoration:none;transition:all .14s;background:transparent;cursor:pointer}
+.mextlink:hover{background:var(--dk);color:#fff;border-color:var(--dk)}
+.mcanvas{flex:1;overflow:auto;background:#dcd8d0;display:flex;align-items:flex-start;justify-content:center;padding:18px;min-height:360px}
+.fw{transition:all .26s}
+.fw.desk{width:100%;max-width:760px;border-radius:10px;overflow:hidden;box-shadow:0 6px 36px rgba(0,0,0,.2)}
+.fw.mob{width:375px;border-radius:32px;overflow:hidden;box-shadow:0 6px 36px rgba(0,0,0,.26),inset 0 0 0 1px rgba(0,0,0,.1)}
+.fw iframe{width:100%;border:none;display:block}
+.fw.desk iframe{height:500px}
+.fw.mob iframe{height:580px}
+.mfoot{padding:11px 16px;border-top:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;gap:10px;background:#faf9f7;flex-shrink:0}
+.mfname{font-size:.96rem;font-weight:400;color:var(--txt)}
+.mfdesc{font-size:.65rem;color:var(--mt);margin-top:1px}
+.mfbtns{display:flex;gap:6px;flex-shrink:0}
+.mf-dl{padding:8px 14px;border-radius:7px;font-size:.74rem;font-weight:500;border:1.5px solid var(--g);background:transparent;color:var(--g3);cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.mf-dl:hover{background:var(--g);color:#fff}
+.mf-ch{padding:8px 16px;border-radius:7px;font-size:.74rem;font-weight:500;border:none;background:var(--dk);color:var(--cr);cursor:pointer;transition:background .18s;white-space:nowrap}
+.mf-ch:hover{background:var(--dk2)}
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--dk);color:var(--cr);padding:9px 18px;border-radius:100px;font-size:.8rem;font-weight:500;opacity:0;transition:all .26s;z-index:999;display:flex;align-items:center;gap:7px;pointer-events:none;white-space:nowrap;box-shadow:0 6px 24px rgba(0,0,0,.28);border:1px solid rgba(201,168,76,.15)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-i{color:var(--g)}
+/* DOWNLOAD INSTRUCTIONS */
+.dl-section{background:var(--dk2);border-top:1px solid rgba(201,168,76,.1);padding:32px 20px;text-align:center}
+.dl-title{font-size:1.1rem;font-weight:300;color:var(--cr);margin-bottom:6px}
+.dl-sub{font-size:.78rem;color:rgba(250,247,241,.4);line-height:1.65;max-width:440px;margin:0 auto 20px}
+.dl-steps{display:flex;align-items:stretch;justify-content:center;gap:0;max-width:600px;margin:0 auto;border:1px solid rgba(201,168,76,.12);border-radius:8px;overflow:hidden}
+.dl-step{flex:1;padding:14px 10px;text-align:center;border-right:1px solid rgba(201,168,76,.08)}
+.dl-step:last-child{border-right:none}
+.dl-step-n{font-size:1.2rem;color:rgba(201,168,76,.3);line-height:1;margin-bottom:4px}
+.dl-step-t{font-size:.72rem;color:var(--cr);font-weight:500;margin-bottom:3px}
+.dl-step-d{font-size:.64rem;color:rgba(250,247,241,.35);line-height:1.5}
+</style>
+
+<div id="app">
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo"><em>NRIX</em></div>
+  <div class="nav-sp"></div>
+  <button class="nav-cta" onclick="document.getElementById('themes-sec').scrollIntoView({behavior:'smooth'})">Lihat 10 Tema ↓</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">NRIX &nbsp;·&nbsp; Undangan Digital Premium</div>
+  <h1 class="hero-h1">Pilih Tema <em>Undangan</em></h1>
+  <p class="hero-sub">Preview langsung di mode HP atau desktop. Download source code HTML-nya dan customisasi sesuai kebutuhan.</p>
+  <button class="hero-btn" onclick="document.getElementById('themes-sec').scrollIntoView({behavior:'smooth'})">
+    Lihat 10 Tema
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1.5v10M1.5 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">10</div><div class="hs-l">Tema</div></div>
+    <div class="hs"><div class="hs-n">40+</div><div class="hs-l">Foto</div></div>
+    <div class="hs"><div class="hs-n">1</div><div class="hs-l">HTML File</div></div>
+    <div class="hs"><div class="hs-n">∞</div><div class="hs-l">Kustom</div></div>
+  </div>
+</div>
+
+<!-- THEMES SECTION -->
+<div class="themes-wrap" id="themes-sec">
+  <div class="sec-hd">
+    <div class="sec-tag">Koleksi Kami</div>
+    <h2 class="sec-title">Pilih Tema <em>Favoritmu</em></h2>
+    <p class="sec-sub">Klik tema untuk preview · Tombol ⬇ untuk download source code</p>
+  </div>
+  <div class="filter">
+    <button class="fb on" data-f="all">Semua</button>
+    <button class="fb" data-f="tradisional">Tradisional</button>
+    <button class="fb" data-f="elegan">Elegan</button>
+    <button class="fb" data-f="romantis">Romantis</button>
+    <button class="fb" data-f="modern">Modern</button>
+    <button class="fb" data-f="minimalis">Minimalis</button>
+  </div>
+  <div class="tgrid" id="tGrid"></div>
+</div>
+
+<!-- DOWNLOAD INSTRUCTIONS -->
+<div class="dl-section">
+  <div class="dl-title">Cara Download &amp; Gunakan</div>
+  <p class="dl-sub">Setiap tema adalah 1 file HTML standalone — tanpa server, tanpa framework, langsung buka di browser.</p>
+  <div class="dl-steps">
+    <div class="dl-step"><div class="dl-step-n">①</div><div class="dl-step-t">Preview</div><div class="dl-step-d">Klik tema untuk preview HP/Desktop</div></div>
+    <div class="dl-step"><div class="dl-step-n">②</div><div class="dl-step-t">Download</div><div class="dl-step-d">Tekan tombol ⬇ di card atau modal</div></div>
+    <div class="dl-step"><div class="dl-step-n">③</div><div class="dl-step-t">Edit</div><div class="dl-step-d">Buka di VS Code, edit nama &amp; tanggal</div></div>
+    <div class="dl-step"><div class="dl-step-n">④</div><div class="dl-step-t">Deploy</div><div class="dl-step-d">Upload ke GitHub Pages atau hosting</div></div>
+  </div>
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="mbar">
+      <div class="micon" id="mIcon">🎨</div>
+      <div>
+        <div class="mtitle" id="mTitle">Preview</div>
+        <div class="msub" id="mSub">Tema</div>
+      </div>
+      <div class="msp"></div>
+      <button class="mcl" id="mCl" aria-label="Tutup">✕</button>
+    </div>
+    <div class="mdevbar">
+      <button class="dvb on" data-d="desk">🖥 Desktop</button>
+      <button class="dvb" data-d="mob">📱 Mobile</button>
+      <div class="mds"></div>
+      <button class="mextlink" id="mExt">↗ Buka Tab Baru</button>
+    </div>
+    <div class="mcanvas">
+      <div class="fw desk" id="mFW">
+        <iframe id="mIF" title="Preview undangan" allow="autoplay"></iframe>
+      </div>
+    </div>
+    <div class="mfoot">
+      <div>
+        <div class="mfname" id="mFName">–</div>
+        <div class="mfdesc" id="mFDesc">–</div>
+      </div>
+      <div class="mfbtns">
+        <button class="mf-dl" id="mDL">⬇ Download HTML</button>
+        <button class="mf-ch" id="mCH">Pilih Tema Ini ✦</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-i">✦</span><span id="toastTxt"></span></div>
+
+<script>
+var T=[
+  {id:1,name:'Bali Sacred',cat:'tradisional',catLbl:'Tradisional',badge:'popular',
+   em:'🛕',file:'theme-01-bali-sacred.html',
+   bg:'radial-gradient(ellipse at 50% 40%,#3B1F0A,#0a0300)',
+   tc:'#E8C96A',acc:'#C9A84C',
+   n1:'Wayan',n2:'Komang',date:'27 Jul 2025',
+   desc:'Mandala SVG animasi · Dark gold · Ornamen suci Bali',
+   s:[10,20,30,40,50,60],feats:['Mandala animasi','Dark gold','Pulsing rings']},
+  {id:2,name:'Dark Elegance',cat:'elegan',catLbl:'Elegan',badge:null,
+   em:'💎',file:'theme-02-dark-elegance.html',
+   bg:'linear-gradient(160deg,#060606,#111,#1a1a1a)',
+   tc:'#f0d060',acc:'#d4af37',
+   n1:'Ahmad',n2:'Nadira',date:'21 Sep 2025',
+   desc:'Hitam elegan · Emas klasik · Tipografi mewah',
+   s:[22,44,66,88,110,132],feats:['Editorial dark','Gold accent','Line texture']},
+  {id:3,name:'Sakura Romance',cat:'romantis',catLbl:'Romantis',badge:'new',
+   em:'🌸',file:'theme-03-sakura-romance.html',
+   bg:'linear-gradient(160deg,#fce8f0,#fad5e4,#f5b8d0)',
+   tc:'#8B0045',acc:'#e91e8c',
+   n1:'Rizky',n2:'Salsabila',date:'14 Jun 2025',
+   desc:'Kelopak sakura jatuh · Pink lembut · Romantis',
+   s:[100,120,140,160,180,200],feats:['Falling petals','Soft pink','Playfair']},
+  {id:4,name:'Tropical Butterfly',cat:'tradisional',catLbl:'Tradisional',badge:null,
+   em:'🦋',file:'theme-04-tropical-butterfly.html',
+   bg:'radial-gradient(ellipse at 50% 30%,#0f3d22,#061a0d)',
+   tc:'#a8e063',acc:'#6dbf67',
+   n1:'Dimas',n2:'Dewi',date:'25 Nov 2025',
+   desc:'Kupu-kupu animasi · Hijau tropis · Nuansa alam',
+   s:[500,520,540,560,580,600],feats:['Butterfly float','Tropical green','Leaf deco']},
+  {id:5,name:'Bali Modern',cat:'modern',catLbl:'Modern',badge:null,
+   em:'🏛',file:'theme-05-bali-modern.html',
+   bg:'linear-gradient(160deg,#2c1f0e,#3d2e1e,#5a3e20)',
+   tc:'#d4a76a',acc:'#b5875a',
+   n1:'Indra',n2:'Feby',date:'12 Okt 2025',
+   desc:'Clean modern · Warm Bali tones · Save the date',
+   s:[300,320,340,360,380,400],feats:['Save the date','Warm brown','Modern clean']},
+  {id:6,name:'Elegant Floral',cat:'romantis',catLbl:'Romantis',badge:null,
+   em:'🌺',file:'theme-06-elegant-floral.html',
+   bg:'linear-gradient(160deg,#f5d4d0,#f9e8e5,#fef0ee)',
+   tc:'#5C1A2A',acc:'#c8746a',
+   n1:'Rama',n2:'Mirah',date:'20 Des 2025',
+   desc:'Bunga elegan · Putih bersih · Rose premium',
+   s:[700,720,740,760,780,800],feats:['Floral corners','Rose pink','Clean white']},
+  {id:7,name:'Mandala Gold',cat:'tradisional',catLbl:'Tradisional',badge:'featured',
+   em:'🔱',file:'theme-07-mandala-gold.html',
+   bg:'radial-gradient(ellipse at 50% 40%,#1a4a52,#0c2028,#07171a)',
+   tc:'#e8d08a',acc:'#c9a84c',
+   n1:'Ages',n2:'Gek Evi',date:'16 Okt 2025',
+   desc:'SVG mandala berlapis · Teal & emas · Spiritual',
+   s:[1010,1030,1050,1070,1090,1110],feats:['Rotating mandala','Teal & gold','Layered']},
+  {id:8,name:'Krisna Hema Modern',cat:'modern',catLbl:'Modern',badge:null,
+   em:'🌊',file:'theme-08-krisna-hema-modern.html',
+   bg:'linear-gradient(160deg,#050f1e,#091828,#1a4a6e)',
+   tc:'#a8d8f0',acc:'#7eb8d4',
+   n1:'Krisna',n2:'Hema',date:'30 Jan 2026',
+   desc:'Full-bleed navy · Ornamen lily · Nama besar',
+   s:[1300,1320,1340,1360,1380,1400],feats:['Full-bleed hero','Lily ornament','Deep navy']},
+  {id:9,name:'Midnight Floral',cat:'elegan',catLbl:'Elegan',badge:null,
+   em:'🌹',file:'theme-09-midnight-floral.html',
+   bg:'radial-gradient(ellipse at 50% 40%,#3d0f52,#2a0a3a,#06030a)',
+   tc:'#ff6b9d',acc:'#c2185b',
+   n1:'Arjuna',n2:'Sekar',date:'8 Mar 2026',
+   desc:'Ungu hitam · Mawar berpendar · Partikel jatuh',
+   s:[1500,1520,1540,1560,1580,1600],feats:['Rose particles','Purple glow','Crimson']},
+  {id:10,name:'Minimalist Ivory',cat:'minimalis',catLbl:'Minimalis',badge:null,
+   em:'🤍',file:'theme-10-minimalist-ivory.html',
+   bg:'linear-gradient(170deg,#faf7f2,#f0ebe0,#e5ddd0)',
+   tc:'#2c2318',acc:'#b09a72',
+   n1:'Rafi',n2:'Nayla',date:'12 Apr 2026',
+   desc:'Ivory premium · Tekstur halus · Sangat bersih',
+   s:[1800,1820,1840,1860,1880,1900],feats:['SVG textures','Warm ivory','Layered bg']}
+];
+
+var grid=document.getElementById('tGrid');
+
+function buildCard(t){
+  var card=document.createElement('div');
+  card.className='tcard';card.dataset.cat=t.cat;
+
+  if(t.badge){
+    var b=document.createElement('div');
+    b.className='tbadge tbadge-'+(t.badge==='popular'?'pop':t.badge==='new'?'new':'feat');
+    b.textContent=t.badge==='popular'?'⭐ Popular':t.badge==='new'?'Baru':'✦ Featured';
+    card.appendChild(b);
+  }
+
+  var top=document.createElement('div');top.className='tcard-top';
+  var pbg=document.createElement('div');pbg.className='tcard-bg';pbg.style.cssText='position:absolute;inset:0;background:'+t.bg;
+  top.appendChild(pbg);
+
+  var phone=document.createElement('div');phone.className='phone';
+  var notch=document.createElement('div');notch.className='phone-notch';phone.appendChild(notch);
+  var scr=document.createElement('div');scr.className='phone-scr';scr.style.background=t.bg;
+  scr.style.color=t.tc;
+
+  scr.innerHTML='<div class="pc-em">'+t.em+'</div>'
+    +'<div class="pc-photo" style="border-color:'+t.acc+'"><img src="https://picsum.photos/seed/'+t.s[0]+'/60/80" loading="lazy" alt=""></div>'
+    +'<div class="pc-names" style="color:'+t.tc+'">'+t.n1+'<br><span style="color:'+t.acc+';font-style:italic">&amp;</span><br>'+t.n2+'</div>'
+    +'<div class="pc-rule" style="background:'+t.acc+'"></div>'
+    +'<div class="pc-date" style="color:'+t.tc+'">'+t.date+'</div>'
+    +'<div class="pc-gal">'
+    +[t.s[1],t.s[2],t.s[3]].map(function(s){return'<div class="pc-gi"><img src="https://picsum.photos/seed/'+s+'/40/55" loading="lazy" alt=""></div>';}).join('')
+    +'</div>'
+    +'<div class="pc-cd">'
+    +['hr','mn','dt'].map(function(l){return'<div class="pc-cdi" style="border-color:'+t.acc+'">'
+      +'<div class="pc-cdi-n" style="color:'+t.acc+'">00</div>'
+      +'<div class="pc-cdi-l" style="color:'+t.tc+'">'+l+'</div></div>';}).join('')
+    +'</div>'
+    +'<div class="pc-mbtn" style="background:'+t.acc+';color:#0a0a0a">RSVP ✦</div>';
+
+  phone.appendChild(scr);top.appendChild(phone);
+
+  var side=document.createElement('div');side.className='tcard-side';
+  side.innerHTML='<div class="tcard-sn">Tema 0'+t.id+'</div>'
+    +'<div class="tcard-name-s">'+t.name+'</div>'
+    +'<div class="tcard-cat-s" style="color:'+t.acc+';opacity:.85">'+t.catLbl+'</div>'
+    +t.feats.map(function(f){return'<div class="tcard-feat">'+f+'</div>';}).join('');
+  top.appendChild(side);
+
+  var ov=document.createElement('div');ov.className='tcard-ov';
+  var ovcta=document.createElement('button');ovcta.className='tcard-ov-btn';ovcta.textContent='👁 Preview';
+  ovcta.onclick=function(e){e.stopPropagation();openModal(t);};
+  ov.appendChild(ovcta);top.appendChild(ov);
+
+  var bot=document.createElement('div');bot.className='tcard-bot';
+  bot.innerHTML='<div><div class="tcard-bot-name">'+t.name+'</div><div class="tcard-bot-cat">'+t.catLbl+'</div></div>';
+  var acts=document.createElement('div');acts.className='tcard-bot-acts';
+  var bp=document.createElement('button');bp.className='t-btn-p';bp.textContent='Preview';
+  bp.onclick=function(e){e.stopPropagation();openModal(t);};
+  var bdl=document.createElement('button');bdl.className='t-btn-d';bdl.title='Download';bdl.textContent='⬇';
+  bdl.onclick=function(e){e.stopPropagation();dlTheme(t);};
+  acts.appendChild(bp);acts.appendChild(bdl);bot.appendChild(acts);
+
+  card.appendChild(top);card.appendChild(bot);
+  card.onclick=function(){openModal(t);};
+  grid.appendChild(card);
+}
+T.forEach(buildCard);
+
+document.querySelectorAll('.fb').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    var f=b.dataset.f;
+    document.querySelectorAll('.tcard').forEach(function(c){
+      c.classList.toggle('hidden',f!=='all'&&c.dataset.cat!==f);
+    });
+  };
+});
+
+var mbg=document.getElementById('modalBg');
+var mfw=document.getElementById('mFW');
+var mif=document.getElementById('mIF');
+var cur=null;
+
+function openModal(t){
+  cur=t;
+  document.getElementById('mIcon').textContent=t.em;
+  document.getElementById('mIcon').style.background=t.bg;
+  document.getElementById('mTitle').textContent=t.name;
+  document.getElementById('mSub').textContent=t.catLbl+' · Tema 0'+t.id;
+  document.getElementById('mFName').textContent=t.name;
+  document.getElementById('mFDesc').textContent=t.desc;
+
+  var extBtn=document.getElementById('mExt');
+  extBtn.onclick=function(){
+    var w=window.open(t.file,'_blank');
+    if(!w){showToast('Buka file: '+t.file);} 
+  };
+
+  document.querySelectorAll('.dvb').forEach(function(b){b.classList.remove('on');});
+  document.querySelector('.dvb[data-d="desk"]').classList.add('on');
+  mfw.className='fw desk';
+  mif.src=t.file;
+  mbg.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  mbg.classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(function(){mif.src='';},300);
+}
+document.getElementById('mCl').onclick=closeModal;
+mbg.onclick=function(e){if(e.target===mbg)closeModal();};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+document.querySelectorAll('.dvb').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.dvb').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    mfw.className='fw '+b.dataset.d;
+  };
+});
+
+function dlTheme(t){
+  var a=document.createElement('a');
+  a.href=t.file;
+  a.download=t.file;
+  a.target='_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast('Downloading "'+t.name+'"...');
+}
+
+document.getElementById('mDL').onclick=function(){if(cur)dlTheme(cur);};
+document.getElementById('mCH').onclick=function(){if(cur){closeModal();showToast('Tema "'+cur.name+'" dipilih! Hubungi kami via WhatsApp 🎉');}};
+
+var toastTmr=null;
+function showToast(msg){
+  var el=document.getElementById('toast');
+  document.getElementById('toastTxt').textContent=msg;
+  el.classList.add('show');
+  clearTimeout(toastTmr);
+  toastTmr=setTimeout(function(){el.classList.remove('show');},3400);
+}
+</script>
